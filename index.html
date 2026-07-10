@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수능 영어 기출 아카이브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --paper-2:#FFFFFF;
+    --ink:#26382F;
+    --green:#2E5D4B;
+    --green-soft:#5c8676;
+    --red:#C8402F;
+    --hl:#FCE38A;
+    --hl-line:#F2C94C;
+    --muted:#8A8578;
+    --line:#E4DFD2;
+    --shadow:0 2px 10px rgba(38,56,47,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+
+  /* Header */
+  header{
+    background:var(--green);
+    color:#fff;
+    padding:34px 0 30px;
+    border-bottom:5px solid var(--red);
+  }
+  header .kicker{font-size:13px;letter-spacing:2px;color:var(--hl);font-weight:700;}
+  header h1{font-size:30px;font-weight:900;margin:6px 0 4px;}
+  header p.sub{font-size:14px;color:#d6e4dd;}
+  .sources{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;}
+  .sources a{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    color:#fff;text-decoration:none;
+    font-size:13px;font-weight:500;
+    padding:7px 13px;border-radius:20px;
+    transition:background .15s;
+  }
+  .sources a:hover{background:rgba(255,255,255,.24);}
+
+  /* Progress */
+  .progress-box{
+    background:var(--paper-2);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    margin:-24px auto 26px;
+    position:relative;z-index:2;
+    padding:20px 24px;
+    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+  }
+  .stat{display:flex;flex-direction:column;}
+  .stat .n{font-size:28px;font-weight:900;color:var(--green);line-height:1;}
+  .stat .n small{font-size:15px;color:var(--muted);font-weight:500;}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:4px;}
+  .bar-wrap{flex:1;min-width:180px;}
+  .bar-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
+  .bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden;}
+  .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-line),var(--green-soft));border-radius:6px;transition:width .4s ease;}
+
+  /* Plan strip */
+  .plan{
+    background:#fffdf6;
+    border:1px dashed var(--hl-line);
+    border-radius:12px;
+    padding:14px 18px;margin-bottom:30px;
+    font-size:13.5px;
+  }
+  .plan b{color:var(--green);}
+  .plan .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+  .chip{
+    font-size:11.5px;background:#fff;border:1px solid var(--line);
+    border-radius:6px;padding:4px 9px;color:var(--ink);
+  }
+  .chip .e{color:var(--green-soft);font-weight:700;}
+  .chip .h{color:var(--red);font-weight:700;}
+
+  /* Year section */
+  .year{margin-bottom:30px;}
+  .year-head{
+    display:flex;align-items:baseline;gap:10px;
+    border-bottom:2px solid var(--line);
+    padding-bottom:8px;margin-bottom:14px;
+  }
+  .year-head h2{font-size:20px;font-weight:900;color:var(--ink);}
+  .year-head .cnt{font-size:12px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+
+  /* Card */
+  .card{
+    background:var(--paper-2);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:15px 16px 14px;
+    position:relative;
+    border-top:4px solid var(--green-soft);
+    overflow:hidden;
+  }
+  .card.suneung{border-top-color:var(--red);}
+  .card.done::after{
+    content:"완료";
+    font-family:'Gaegu',cursive;font-weight:700;
+    position:absolute;top:14px;right:-6px;
+    color:var(--red);border:2.5px solid var(--red);
+    border-radius:8px;padding:1px 12px;font-size:20px;
+    transform:rotate(9deg);opacity:.85;
+    letter-spacing:2px;
+  }
+  .card .tag{
+    font-size:11px;font-weight:700;letter-spacing:1px;
+    color:var(--green-soft);text-transform:uppercase;
+  }
+  .card.suneung .tag{color:var(--red);}
+  .card h3{font-size:16px;font-weight:700;margin:2px 0 10px;}
+  .links{display:flex;flex-direction:column;gap:6px;margin-bottom:11px;}
+  .lk{
+    display:flex;align-items:center;gap:7px;
+    font-size:12.5px;text-decoration:none;
+    padding:6px 9px;border-radius:7px;
+    border:1px solid var(--line);color:var(--ink);
+    transition:.13s;
+  }
+  .lk:hover{background:#f4f1e7;border-color:var(--green-soft);}
+  .lk .ic{width:16px;text-align:center;}
+  .lk.empty{color:var(--muted);border-style:dashed;pointer-events:none;opacity:.6;}
+  .lk.yt .ic{color:var(--red);}
+
+  .checks{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:10px;}
+  .chk{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
+    font-size:12px;font-weight:500;cursor:pointer;
+    padding:6px;border-radius:7px;border:1px solid var(--line);
+    background:#fff;user-select:none;transition:.12s;
+  }
+  .chk:hover{border-color:var(--green-soft);}
+  .chk.on{background:var(--hl);border-color:var(--hl-line);font-weight:700;color:#7a5c00;}
+  .chk .box{
+    width:15px;height:15px;border:1.5px solid var(--muted);border-radius:4px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:transparent;
+  }
+  .chk.on .box{background:var(--green);border-color:var(--green);color:#fff;}
+
+  .memo{
+    width:100%;margin-top:8px;border:none;border-bottom:1px dashed var(--line);
+    background:transparent;font-family:'Gaegu',cursive;font-size:15px;color:var(--green);
+    padding:3px 2px;resize:none;
+  }
+  .memo::placeholder{color:#c3bdae;}
+  .memo:focus{outline:none;border-bottom-color:var(--hl-line);}
+
+  footer{
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);line-height:1.7;
+  }
+  footer b{color:var(--ink);}
+  footer code{background:#efeade;padding:1px 6px;border-radius:4px;font-size:12px;}
+
+  @media(max-width:720px){
+    .grid{grid-template-columns:1fr;}
+    header h1{font-size:24px;}
+    .progress-box{gap:16px;}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">SUNEUNG ENGLISH · 기출 아카이브</div>
+    <h1>수능 영어 기출 아카이브</h1>
+    <p class="sub">2018학년도 ~ 최신 · 6월 모평 · 9월 모평 · 수능 — 평가원 기출로만</p>
+    <div class="sources">
+      <a href="https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung" target="_blank" rel="noopener">📄 평가원 기출 원본</a>
+      <a href="https://www.ebsi.co.kr/ebs/xip/xipc/previousPaperList.ebs" target="_blank" rel="noopener">📚 EBSi 기출(해설·듣기)</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="progress-box">
+    <div class="stat"><span class="n" id="doneCnt">0<small>/27</small></span><span class="l">2회독 완료 회차</span></div>
+    <div class="stat"><span class="n" id="dayCnt">0<small>/54</small></span><span class="l">완료 일차(회독=하루)</span></div>
+    <div class="bar-wrap">
+      <div class="bar-label"><span>전체 진도</span><span id="pct">0%</span></div>
+      <div class="bar"><span id="barFill"></span></div>
+    </div>
+  </div>
+
+  <div class="plan">
+    <b>하루 루틴</b> — 하루에 반 회분씩. <b>18~30번</b> 풀고 채점 → <b>31~45번</b> 풀고 채점 → 답 이유 확인 + 모르는 단어만 정리.
+    한 회차를 이틀에 나눠 풀어도 OK. 목표는 <b>2회독 = 54일</b>.
+    <div class="row">
+      <span class="chip">18–20 <span class="e">easy</span></span>
+      <span class="chip">21–24 <span class="h">hard</span> 주제·제목</span>
+      <span class="chip">25–28 <span class="e">easy</span> 도표·안내문</span>
+      <span class="chip">29–40 <span class="h">hard</span> 빈칸·순서·삽입·요약</span>
+      <span class="chip">41–45 <span class="e">easy</span></span>
+    </div>
+  </div>
+
+  <div id="years"></div>
+
+  <footer>
+    <b>링크 추가하는 법</b> — 이 파일 상단 <code>&lt;script&gt;</code> 안의 <code>SESSIONS</code> 목록에서 각 회차의
+    <code>q</code>(문제), <code>a</code>(정답·해설), <code>yt</code>(유튜브 듣기)에 주소를 붙여넣으면 버튼이 활성화됩니다.<br>
+    <b>진도·메모</b>는 이 브라우저에 자동 저장돼요(회독 체크·메모). 다른 기기와 공유하려면 링크만 코드에 넣어 <code>git push</code>.<br>
+    <b>저작권</b> — 문제지 원본(PDF)은 저장하지 않고 평가원·EBSi로 링크만 연결하는 구조입니다.
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   회차별 링크를 여기에 붙여넣으세요.
+   q  = 문제지 PDF 링크   (평가원/EBSi)
+   a  = 정답·해설 링크
+   yt = 듣기 음원 유튜브 링크
+   비워두면 '링크 추가 필요'로 표시됩니다.
+   ============================================================ */
+const SESSIONS = [
+  // 2018학년도
+  { y:2018, m:"6",  q:"", a:"", yt:"" },
+  { y:2018, m:"9",  q:"", a:"", yt:"" },
+  { y:2018, m:"수능", q:"", a:"", yt:"" },
+  // 2019학년도
+  { y:2019, m:"6",  q:"", a:"", yt:"" },
+  { y:2019, m:"9",  q:"", a:"", yt:"" },
+  { y:2019, m:"수능", q:"", a:"", yt:"" },
+  // 2020학년도
+  { y:2020, m:"6",  q:"", a:"", yt:"" },
+  { y:2020, m:"9",  q:"", a:"", yt:"" },
+  { y:2020, m:"수능", q:"", a:"", yt:"" },
+  // 2021학년도
+  { y:2021, m:"6",  q:"", a:"", yt:"" },
+  { y:2021, m:"9",  q:"", a:"", yt:"" },
+  { y:2021, m:"수능", q:"", a:"", yt:"" },
+  // 2022학년도
+  { y:2022, m:"6",  q:"", a:"", yt:"" },
+  { y:2022, m:"9",  q:"", a:"", yt:"" },
+  { y:2022, m:"수능", q:"", a:"", yt:"" },
+  // 2023학년도
+  { y:2023, m:"6",  q:"", a:"", yt:"" },
+  { y:2023, m:"9",  q:"", a:"", yt:"" },
+  { y:2023, m:"수능", q:"", a:"", yt:"" },
+  // 2024학년도
+  { y:2024, m:"6",  q:"", a:"", yt:"" },
+  { y:2024, m:"9",  q:"", a:"", yt:"" },
+  { y:2024, m:"수능", q:"", a:"", yt:"" },
+  // 2025학년도
+  { y:2025, m:"6",  q:"", a:"", yt:"" },
+  { y:2025, m:"9",  q:"", a:"", yt:"" },
+  { y:2025, m:"수능", q:"", a:"", yt:"" },
+  // 2026학년도  ← 여기까지가 핵심 27회차
+  { y:2026, m:"6",  q:"", a:"", yt:"" },
+  { y:2026, m:"9",  q:"", a:"", yt:"" },
+  { y:2026, m:"수능", q:"", a:"", yt:"" },
+  // 2027학년도 (최신 · 6월만 시행됨)
+  { y:2027, m:"6",  q:"", a:"", yt:"" },
+];
+
+const CORE = 27; // 2회독 = 54일 기준 회차 수
+const mLabel = m => m==="수능" ? "수능" : (m+"월 모평");
+const sid = s => s.y+"-"+s.m;
+const store = {
+  get(id){ try{ return JSON.parse(localStorage.getItem("eng-"+id)) || {}; }catch(e){ return {}; } },
+  set(id,v){ localStorage.setItem("eng-"+id, JSON.stringify(v)); }
+};
+
+function linkRow(href, icon, label, cls=""){
+  if(href) return `<a class="lk ${cls}" href="${href}" target="_blank" rel="noopener"><span class="ic">${icon}</span>${label}</a>`;
+  return `<span class="lk empty"><span class="ic">${icon}</span>${label} · 링크 추가 필요</span>`;
+}
+
+function render(){
+  const host = document.getElementById("years");
+  host.innerHTML = "";
+  const byYear = {};
+  SESSIONS.forEach(s => { if(!byYear[s.y]) byYear[s.y]=[]; byYear[s.y].push(s); });
+
+  Object.keys(byYear).sort().forEach(y => {
+    const sec = document.createElement("div");
+    sec.className = "year";
+    const isLatest = (+y===2027);
+    sec.innerHTML = `<div class="year-head"><h2>${y}학년도</h2>
+      <span class="cnt">${isLatest ? "최신 · 6월만 시행" : "6월 · 9월 · 수능"}</span></div>
+      <div class="grid"></div>`;
+    const grid = sec.querySelector(".grid");
+
+    byYear[y].forEach(s => {
+      const id = sid(s);
+      const st = store.get(id);
+      const suneung = s.m==="수능";
+      const done = st.r1 && st.r2;
+      const card = document.createElement("div");
+      card.className = "card" + (suneung?" suneung":"") + (done?" done":"");
+      card.innerHTML = `
+        <div class="tag">${suneung?"수능":"모의평가"}</div>
+        <h3>${mLabel(s.m)}</h3>
+        <div class="links">
+          ${linkRow(s.q,"📄","문제지")}
+          ${linkRow(s.a,"✅","정답·해설")}
+          ${linkRow(s.yt,"▶","듣기(유튜브)","yt")}
+        </div>
+        <div class="checks">
+          <div class="chk ${st.r1?"on":""}" data-r="r1"><span class="box">✓</span>1회독</div>
+          <div class="chk ${st.r2?"on":""}" data-r="r2"><span class="box">✓</span>2회독</div>
+        </div>
+        <input class="memo" placeholder="메모 · 틀린 유형, 어휘…" value="${(st.memo||"").replace(/"/g,"&quot;")}">
+      `;
+      card.querySelectorAll(".chk").forEach(chk => {
+        chk.addEventListener("click", () => {
+          const cur = store.get(id);
+          cur[chk.dataset.r] = !cur[chk.dataset.r];
+          store.set(id, cur);
+          render();
+        });
+      });
+      const memo = card.querySelector(".memo");
+      memo.addEventListener("input", () => {
+        const cur = store.get(id); cur.memo = memo.value; store.set(id, cur);
+      });
+      grid.appendChild(card);
+    });
+    host.appendChild(sec);
+  });
+  updateProgress();
+}
+
+function updateProgress(){
+  const core = SESSIONS.slice(0, CORE);
+  let doneCards = 0, doneReadings = 0;
+  core.forEach(s => {
+    const st = store.get(sid(s));
+    if(st.r1) doneReadings++;
+    if(st.r2) doneReadings++;
+    if(st.r1 && st.r2) doneCards++;
+  });
+  document.getElementById("doneCnt").innerHTML = doneCards + "<small>/27</small>";
+  document.getElementById("dayCnt").innerHTML = doneReadings + "<small>/54</small>";
+  const pct = Math.round(doneReadings/54*100);
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("barFill").style.width = pct + "%";
+}
+
+render();
+</script>
+</body>
+</html>
