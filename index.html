@@ -57,6 +57,12 @@
   .open.suneung:hover{background:#a8331f;}
   .open.empty{background:#f4f1e7;color:var(--muted);border:1px dashed var(--line);pointer-events:none;font-weight:500;}
   .sub-note{font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px;}
+  .side-links{display:flex;gap:6px;margin-bottom:10px;}
+  .side-link{flex:1;text-align:center;font-size:12px;font-weight:700;text-decoration:none;border-radius:7px;padding:7px 4px;transition:.13s;}
+  .side-link.vocab{background:var(--hl);color:#7a5c00;}
+  .side-link.vocab:hover{background:var(--hl-line);}
+  .side-link.explain{background:#e7f0ec;color:var(--green);}
+  .side-link.explain:hover{background:#d6e6df;}
   .flag{font-size:11px;color:var(--red);text-align:center;margin-bottom:8px;font-weight:500;}
   .checks{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:10px;}
   .chk{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:500;cursor:pointer;padding:6px;border-radius:7px;border:1px solid var(--line);background:#fff;user-select:none;transition:.12s;}
@@ -129,7 +135,7 @@
    ============================================================ */
 const SESSIONS = [
   // 2018학년도
-  { y:2018, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5013302&lev=0&m=0403&searchType=S&statusYN=W&page=16&s=suneung" },
+  { y:2018, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5013302&lev=0&m=0403&searchType=S&statusYN=W&page=16&s=suneung", vocab:"2018-06" },
   { y:2018, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5014608&lev=0&m=0403&searchType=S&statusYN=W&page=15&s=suneung" },
   { y:2018, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5019793&lev=0&m=0403&searchType=S&statusYN=W&page=7&s=suneung" },
   // 2019학년도
@@ -201,11 +207,16 @@ function render(){
       const openBtn = s.url
         ? `<a class="open ${suneung?"suneung":""}" href="${s.url}" target="_blank" rel="noopener">📂 자료 보기</a>`
         : `<span class="open empty">📂 링크 추가 필요</span>`;
+      const sessCode = s.y + "-" + s.m;
+      const extra =
+        (s.vocab ? `<a class="side-link vocab" href="vocab/index.html?s=${sessCode}">📓 단어장</a>` : "") +
+        (s.explain ? `<a class="side-link explain" href="explain/${sessCode}.html">📖 해석풀이</a>` : "");
       card.innerHTML = `
         <div class="tag">${suneung?"수능":"모의평가"}</div>
         <h3>${mLabel(s.m)}</h3>
         ${openBtn}
         <div class="sub-note">문제 · 정답 · 해설 · 듣기 음원</div>
+        ${extra?`<div class="side-links">${extra}</div>`:""}
         ${s.flag?`<div class="flag">${s.flag}</div>`:""}
         <div class="checks">
           <div class="chk ${st.r1?"on":""}" data-r="r1"><span class="box">✓</span>1회독</div>
