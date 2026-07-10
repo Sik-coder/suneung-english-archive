@@ -9,61 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F7F4EC;
-    --paper-2:#FFFFFF;
-    --ink:#26382F;
-    --green:#2E5D4B;
-    --green-soft:#5c8676;
-    --red:#C8402F;
-    --hl:#FCE38A;
-    --hl-line:#F2C94C;
-    --muted:#8A8578;
-    --line:#E4DFD2;
-    --shadow:0 2px 10px rgba(38,56,47,.07);
+    --paper:#F7F4EC; --paper-2:#FFFFFF; --ink:#26382F;
+    --green:#2E5D4B; --green-soft:#5c8676; --red:#C8402F;
+    --hl:#FCE38A; --hl-line:#F2C94C; --muted:#8A8578;
+    --line:#E4DFD2; --shadow:0 2px 10px rgba(38,56,47,.07);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    font-family:'Noto Sans KR',sans-serif;
-    background:var(--paper);
-    color:var(--ink);
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    padding-bottom:60px;
-  }
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:60px;}
   a{color:inherit;}
   .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
-
-  /* Header */
-  header{
-    background:var(--green);
-    color:#fff;
-    padding:34px 0 30px;
-    border-bottom:5px solid var(--red);
-  }
+  header{background:var(--green);color:#fff;padding:34px 0 30px;border-bottom:5px solid var(--red);}
   header .kicker{font-size:13px;letter-spacing:2px;color:var(--hl);font-weight:700;}
   header h1{font-size:30px;font-weight:900;margin:6px 0 4px;}
   header p.sub{font-size:14px;color:#d6e4dd;}
   .sources{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;}
-  .sources a{
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);
-    color:#fff;text-decoration:none;
-    font-size:13px;font-weight:500;
-    padding:7px 13px;border-radius:20px;
-    transition:background .15s;
-  }
+  .sources a{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;font-size:13px;font-weight:500;padding:7px 13px;border-radius:20px;transition:background .15s;}
   .sources a:hover{background:rgba(255,255,255,.24);}
-
-  /* Progress */
-  .progress-box{
-    background:var(--paper-2);
-    border-radius:14px;
-    box-shadow:var(--shadow);
-    margin:-24px auto 26px;
-    position:relative;z-index:2;
-    padding:20px 24px;
-    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
-  }
+  .progress-box{background:var(--paper-2);border-radius:14px;box-shadow:var(--shadow);margin:-24px auto 26px;position:relative;z-index:2;padding:20px 24px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
   .stat{display:flex;flex-direction:column;}
   .stat .n{font-size:28px;font-weight:900;color:var(--green);line-height:1;}
   .stat .n small{font-size:15px;color:var(--muted);font-weight:500;}
@@ -72,109 +34,43 @@
   .bar-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
   .bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden;}
   .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-line),var(--green-soft));border-radius:6px;transition:width .4s ease;}
-
-  /* Plan strip */
-  .plan{
-    background:#fffdf6;
-    border:1px dashed var(--hl-line);
-    border-radius:12px;
-    padding:14px 18px;margin-bottom:30px;
-    font-size:13.5px;
-  }
+  .plan{background:#fffdf6;border:1px dashed var(--hl-line);border-radius:12px;padding:14px 18px;margin-bottom:30px;font-size:13.5px;}
   .plan b{color:var(--green);}
   .plan .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-  .chip{
-    font-size:11.5px;background:#fff;border:1px solid var(--line);
-    border-radius:6px;padding:4px 9px;color:var(--ink);
-  }
+  .chip{font-size:11.5px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 9px;color:var(--ink);}
   .chip .e{color:var(--green-soft);font-weight:700;}
   .chip .h{color:var(--red);font-weight:700;}
-
-  /* Year section */
   .year{margin-bottom:30px;}
-  .year-head{
-    display:flex;align-items:baseline;gap:10px;
-    border-bottom:2px solid var(--line);
-    padding-bottom:8px;margin-bottom:14px;
-  }
+  .year-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:14px;}
   .year-head h2{font-size:20px;font-weight:900;color:var(--ink);}
   .year-head .cnt{font-size:12px;color:var(--muted);}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-
-  /* Card */
-  .card{
-    background:var(--paper-2);
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    padding:15px 16px 14px;
-    position:relative;
-    border-top:4px solid var(--green-soft);
-    overflow:hidden;
-  }
+  .card{background:var(--paper-2);border-radius:12px;box-shadow:var(--shadow);padding:15px 16px 14px;position:relative;border-top:4px solid var(--green-soft);overflow:hidden;}
   .card.suneung{border-top-color:var(--red);}
-  .card.done::after{
-    content:"완료";
-    font-family:'Gaegu',cursive;font-weight:700;
-    position:absolute;top:14px;right:-6px;
-    color:var(--red);border:2.5px solid var(--red);
-    border-radius:8px;padding:1px 12px;font-size:20px;
-    transform:rotate(9deg);opacity:.85;
-    letter-spacing:2px;
-  }
-  .card .tag{
-    font-size:11px;font-weight:700;letter-spacing:1px;
-    color:var(--green-soft);text-transform:uppercase;
-  }
+  .card.done::after{content:"완료";font-family:'Gaegu',cursive;font-weight:700;position:absolute;top:14px;right:-6px;color:var(--red);border:2.5px solid var(--red);border-radius:8px;padding:1px 12px;font-size:20px;transform:rotate(9deg);opacity:.85;letter-spacing:2px;}
+  .card .tag{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--green-soft);text-transform:uppercase;}
   .card.suneung .tag{color:var(--red);}
   .card h3{font-size:16px;font-weight:700;margin:2px 0 10px;}
-  .links{display:flex;flex-direction:column;gap:6px;margin-bottom:11px;}
-  .lk{
-    display:flex;align-items:center;gap:7px;
-    font-size:12.5px;text-decoration:none;
-    padding:6px 9px;border-radius:7px;
-    border:1px solid var(--line);color:var(--ink);
-    transition:.13s;
-  }
-  .lk:hover{background:#f4f1e7;border-color:var(--green-soft);}
-  .lk .ic{width:16px;text-align:center;}
-  .lk.empty{color:var(--muted);border-style:dashed;pointer-events:none;opacity:.6;}
-  .lk.yt .ic{color:var(--red);}
-
+  .open{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:700;text-decoration:none;padding:10px;border-radius:8px;background:var(--green);color:#fff;transition:.13s;margin-bottom:6px;}
+  .open:hover{background:#25493b;}
+  .open.suneung{background:var(--red);}
+  .open.suneung:hover{background:#a8331f;}
+  .open.empty{background:#f4f1e7;color:var(--muted);border:1px dashed var(--line);pointer-events:none;font-weight:500;}
+  .sub-note{font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px;}
+  .flag{font-size:11px;color:var(--red);text-align:center;margin-bottom:8px;font-weight:500;}
   .checks{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:10px;}
-  .chk{
-    flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
-    font-size:12px;font-weight:500;cursor:pointer;
-    padding:6px;border-radius:7px;border:1px solid var(--line);
-    background:#fff;user-select:none;transition:.12s;
-  }
+  .chk{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:500;cursor:pointer;padding:6px;border-radius:7px;border:1px solid var(--line);background:#fff;user-select:none;transition:.12s;}
   .chk:hover{border-color:var(--green-soft);}
   .chk.on{background:var(--hl);border-color:var(--hl-line);font-weight:700;color:#7a5c00;}
-  .chk .box{
-    width:15px;height:15px;border:1.5px solid var(--muted);border-radius:4px;
-    display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:transparent;
-  }
+  .chk .box{width:15px;height:15px;border:1.5px solid var(--muted);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:transparent;}
   .chk.on .box{background:var(--green);border-color:var(--green);color:#fff;}
-
-  .memo{
-    width:100%;margin-top:8px;border:none;border-bottom:1px dashed var(--line);
-    background:transparent;font-family:'Gaegu',cursive;font-size:15px;color:var(--green);
-    padding:3px 2px;resize:none;
-  }
+  .memo{width:100%;margin-top:8px;border:none;border-bottom:1px dashed var(--line);background:transparent;font-family:'Gaegu',cursive;font-size:15px;color:var(--green);padding:3px 2px;resize:none;}
   .memo::placeholder{color:#c3bdae;}
   .memo:focus{outline:none;border-bottom-color:var(--hl-line);}
-
-  footer{
-    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
-    font-size:12.5px;color:var(--muted);line-height:1.7;
-  }
+  footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.7;}
   footer b{color:var(--ink);}
   footer code{background:#efeade;padding:1px 6px;border-radius:4px;font-size:12px;}
-
-  @media(max-width:720px){
-    .grid{grid-template-columns:1fr;}
-    header h1{font-size:24px;}
-    .progress-box{gap:16px;}
-  }
+  @media(max-width:720px){.grid{grid-template-columns:1fr;}header h1{font-size:24px;}.progress-box{gap:16px;}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
 </head>
@@ -186,8 +82,8 @@
     <h1>수능 영어 기출 아카이브</h1>
     <p class="sub">2018학년도 ~ 최신 · 6월 모평 · 9월 모평 · 수능 — 평가원 기출로만</p>
     <div class="sources">
-      <a href="https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung" target="_blank" rel="noopener">📄 평가원 기출 원본</a>
-      <a href="https://www.ebsi.co.kr/ebs/xip/xipc/previousPaperList.ebs" target="_blank" rel="noopener">📚 EBSi 기출(해설·듣기)</a>
+      <a href="https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung" target="_blank" rel="noopener">📄 평가원 수능 기출</a>
+      <a href="https://www.suneung.re.kr/boardCnts/list.do?boardID=1500236&m=0403&s=suneung" target="_blank" rel="noopener">📄 평가원 모의평가 기출</a>
     </div>
   </div>
 </header>
@@ -217,74 +113,68 @@
   <div id="years"></div>
 
   <footer>
-    <b>링크 추가하는 법</b> — 이 파일 상단 <code>&lt;script&gt;</code> 안의 <code>SESSIONS</code> 목록에서 각 회차의
-    <code>q</code>(문제), <code>a</code>(정답·해설), <code>yt</code>(유튜브 듣기)에 주소를 붙여넣으면 버튼이 활성화됩니다.<br>
+    <b>자료 열기</b> — 각 카드의 <b>자료 보기</b> 버튼을 누르면 평가원 게시글이 열립니다.
+    한 페이지 안에 <b>문제지 · 정답 · 해설 · 듣기 음원</b>이 모두 들어 있어요.<br>
+    <b>링크 추가·수정</b> — 이 파일 상단 <code>&lt;script&gt;</code> 안의 <code>SESSIONS</code> 목록에서 각 회차의
+    <code>url</code>에 주소를 붙여넣으면 됩니다.<br>
     <b>진도·메모</b>는 이 브라우저에 자동 저장돼요(회독 체크·메모). 다른 기기와 공유하려면 링크만 코드에 넣어 <code>git push</code>.<br>
-    <b>저작권</b> — 문제지 원본(PDF)은 저장하지 않고 평가원·EBSi로 링크만 연결하는 구조입니다.
+    <b>저작권</b> — 문제지 원본(PDF)은 저장하지 않고 평가원으로 링크만 연결하는 구조입니다.
   </footer>
 </div>
 
 <script>
 /* ============================================================
-   회차별 링크를 여기에 붙여넣으세요.
-   q  = 문제지 PDF 링크   (평가원/EBSi)
-   a  = 정답·해설 링크
-   yt = 듣기 음원 유튜브 링크
-   비워두면 '링크 추가 필요'로 표시됩니다.
+   회차별 링크. url = 평가원 게시글(문제·정답·해설·듣기 포함).
+   flag = 카드에 빨간 안내문구 표시(선택).
    ============================================================ */
 const SESSIONS = [
   // 2018학년도
-  { y:2018, m:"6",  q:"", a:"", yt:"" },
-  { y:2018, m:"9",  q:"", a:"", yt:"" },
-  { y:2018, m:"수능", q:"", a:"", yt:"" },
+  { y:2018, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5013302&lev=0&m=0403&searchType=S&statusYN=W&page=16&s=suneung" },
+  { y:2018, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5014608&lev=0&m=0403&searchType=S&statusYN=W&page=15&s=suneung" },
+  { y:2018, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5019793&lev=0&m=0403&searchType=S&statusYN=W&page=7&s=suneung" },
   // 2019학년도
-  { y:2019, m:"6",  q:"", a:"", yt:"" },
-  { y:2019, m:"9",  q:"", a:"", yt:"" },
-  { y:2019, m:"수능", q:"", a:"", yt:"" },
+  { y:2019, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5023285&lev=0&m=0403&searchType=S&statusYN=W&page=14&s=suneung" },
+  { y:2019, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5024244&lev=0&m=0403&searchType=S&statusYN=W&page=13&s=suneung" },
+  { y:2019, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5031122&lev=0&m=0403&searchType=S&statusYN=W&page=6&s=suneung" },
   // 2020학년도
-  { y:2020, m:"6",  q:"", a:"", yt:"" },
-  { y:2020, m:"9",  q:"", a:"", yt:"" },
-  { y:2020, m:"수능", q:"", a:"", yt:"" },
+  { y:2020, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5037373&lev=0&m=0403&searchType=S&statusYN=W&page=12&s=suneung" },
+  { y:2020, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5038442&lev=0&m=0403&searchType=S&statusYN=W&page=11&s=suneung" },
+  { y:2020, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5045859&lev=0&m=0403&searchType=S&statusYN=W&page=6&s=suneung" },
   // 2021학년도
-  { y:2021, m:"6",  q:"", a:"", yt:"" },
-  { y:2021, m:"9",  q:"", a:"", yt:"" },
-  { y:2021, m:"수능", q:"", a:"", yt:"" },
+  { y:2021, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5049916&lev=0&m=0403&searchType=S&statusYN=W&page=11&s=suneung" },
+  { y:2021, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5050886&lev=0&m=0403&searchType=S&statusYN=W&page=10&s=suneung" },
+  { y:2021, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5061633&lev=0&m=0403&searchType=S&statusYN=W&page=5&s=suneung" },
   // 2022학년도
-  { y:2022, m:"6",  q:"", a:"", yt:"" },
-  { y:2022, m:"9",  q:"", a:"", yt:"" },
-  { y:2022, m:"수능", q:"", a:"", yt:"" },
+  { y:2022, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5063572&lev=0&m=0403&searchType=S&statusYN=W&page=9&s=suneung" },
+  { y:2022, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5064693&lev=0&m=0403&searchType=S&statusYN=W&page=8&s=suneung" },
+  { y:2022, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5070164&lev=0&m=0403&searchType=S&statusYN=W&page=4&s=suneung" },
   // 2023학년도
-  { y:2023, m:"6",  q:"", a:"", yt:"" },
-  { y:2023, m:"9",  q:"", a:"", yt:"" },
-  { y:2023, m:"수능", q:"", a:"", yt:"" },
+  { y:2023, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5076592&lev=0&m=0403&searchType=S&statusYN=W&page=7&s=suneung" },
+  { y:2023, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5077481&lev=0&m=0403&searchType=S&statusYN=W&page=6&s=suneung" },
+  { y:2023, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5080827&lev=0&m=0403&searchType=S&statusYN=W&page=3&s=suneung" },
   // 2024학년도
-  { y:2024, m:"6",  q:"", a:"", yt:"" },
-  { y:2024, m:"9",  q:"", a:"", yt:"" },
-  { y:2024, m:"수능", q:"", a:"", yt:"" },
+  { y:2024, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5084521&lev=0&m=0403&searchType=S&statusYN=W&page=6&s=suneung" },
+  { y:2024, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5085155&lev=0&m=0403&searchType=S&statusYN=W&page=5&s=suneung" },
+  { y:2024, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5086091&lev=0&m=0403&searchType=S&statusYN=W&page=2&s=suneung" },
   // 2025학년도
-  { y:2025, m:"6",  q:"", a:"", yt:"" },
-  { y:2025, m:"9",  q:"", a:"", yt:"" },
-  { y:2025, m:"수능", q:"", a:"", yt:"" },
+  { y:2025, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086961&lev=0&m=0403&searchType=S&statusYN=W&page=4&s=suneung" },
+  { y:2025, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087695&lev=0&m=0403&searchType=S&statusYN=W&page=3&s=suneung" },
+  { y:2025, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5089362&lev=0&m=0403&searchType=S&statusYN=W&page=2&s=suneung" },
   // 2026학년도  ← 여기까지가 핵심 27회차
-  { y:2026, m:"6",  q:"", a:"", yt:"" },
-  { y:2026, m:"9",  q:"", a:"", yt:"" },
-  { y:2026, m:"수능", q:"", a:"", yt:"" },
-  // 2027학년도 (최신 · 6월만 시행됨)
-  { y:2027, m:"6",  q:"", a:"", yt:"" },
+  { y:2026, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5090182&lev=0&m=0403&searchType=S&statusYN=W&page=2&s=suneung" },
+  { y:2026, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5091403&lev=0&m=0403&searchType=S&statusYN=W&page=2&s=suneung" },
+  { y:2026, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5093799&lev=0&m=0403&searchType=S&statusYN=W&page=1&s=suneung" },
+  // 2027학년도 (최신 · 6월만 시행)
+  { y:2027, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5095396&lev=0&m=0403&searchType=S&statusYN=W&page=1&s=suneung" },
 ];
 
-const CORE = 27; // 2회독 = 54일 기준 회차 수
+const CORE = 27;
 const mLabel = m => m==="수능" ? "수능" : (m+"월 모평");
 const sid = s => s.y+"-"+s.m;
 const store = {
   get(id){ try{ return JSON.parse(localStorage.getItem("eng-"+id)) || {}; }catch(e){ return {}; } },
   set(id,v){ localStorage.setItem("eng-"+id, JSON.stringify(v)); }
 };
-
-function linkRow(href, icon, label, cls=""){
-  if(href) return `<a class="lk ${cls}" href="${href}" target="_blank" rel="noopener"><span class="ic">${icon}</span>${label}</a>`;
-  return `<span class="lk empty"><span class="ic">${icon}</span>${label} · 링크 추가 필요</span>`;
-}
 
 function render(){
   const host = document.getElementById("years");
@@ -308,14 +198,15 @@ function render(){
       const done = st.r1 && st.r2;
       const card = document.createElement("div");
       card.className = "card" + (suneung?" suneung":"") + (done?" done":"");
+      const openBtn = s.url
+        ? `<a class="open ${suneung?"suneung":""}" href="${s.url}" target="_blank" rel="noopener">📂 자료 보기</a>`
+        : `<span class="open empty">📂 링크 추가 필요</span>`;
       card.innerHTML = `
         <div class="tag">${suneung?"수능":"모의평가"}</div>
         <h3>${mLabel(s.m)}</h3>
-        <div class="links">
-          ${linkRow(s.q,"📄","문제지")}
-          ${linkRow(s.a,"✅","정답·해설")}
-          ${linkRow(s.yt,"▶","듣기(유튜브)","yt")}
-        </div>
+        ${openBtn}
+        <div class="sub-note">문제 · 정답 · 해설 · 듣기 음원</div>
+        ${s.flag?`<div class="flag">${s.flag}</div>`:""}
         <div class="checks">
           <div class="chk ${st.r1?"on":""}" data-r="r1"><span class="box">✓</span>1회독</div>
           <div class="chk ${st.r2?"on":""}" data-r="r2"><span class="box">✓</span>2회독</div>
