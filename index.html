@@ -125,7 +125,7 @@
     <code>url</code>에 주소를 붙여넣으면 됩니다.<br>
     <b>진도·메모</b>는 이 브라우저에 자동 저장돼요(회독 체크·메모). 다른 기기와 공유하려면 링크만 코드에 넣어 <code>git push</code>.<br>
     <b>저작권</b> — 문제지 원본(PDF)은 저장하지 않고 평가원으로 링크만 연결하는 구조입니다.<br>
-    <span style="color:#c3bdae;font-size:11px;">v3 · 경로 수정</span>
+    <span style="color:#c3bdae;font-size:11px;">v4 · 회차코드 통일(0 없음)</span>
   </footer>
 </div>
 
@@ -136,7 +136,7 @@
    ============================================================ */
 const SESSIONS = [
   // 2018학년도
-  { y:2018, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5013302&lev=0&m=0403&searchType=S&statusYN=W&page=16&s=suneung", vocab:"2018-06", explain:true },
+  { y:2018, m:"6",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5013302&lev=0&m=0403&searchType=S&statusYN=W&page=16&s=suneung", vocab:"2018-6", explain:true },
   { y:2018, m:"9",  url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5014608&lev=0&m=0403&searchType=S&statusYN=W&page=15&s=suneung" },
   { y:2018, m:"수능", url:"https://www.suneung.re.kr/boardCnts/view.do?boardID=1500234&boardSeq=5019793&lev=0&m=0403&searchType=S&statusYN=W&page=7&s=suneung" },
   // 2019학년도
@@ -208,7 +208,7 @@ function render(){
       const openBtn = s.url
         ? `<a class="open ${suneung?"suneung":""}" href="${s.url}" target="_blank" rel="noopener">📂 자료 보기</a>`
         : `<span class="open empty">📂 링크 추가 필요</span>`;
-      const sessCode = s.y + "-" + (s.m === "수능" ? "수능" : String(s.m).padStart(2, "0"));
+      const sessCode = s.y + "-" + s.m;
       const extra =
         (s.vocab ? `<a class="side-link vocab" href="vocab/index.html?s=${sessCode}">📓 단어장</a>` : "") +
         (s.explain ? `<a class="side-link explain" href="explain/${sessCode}.html">📖 해석풀이</a>` : "");
