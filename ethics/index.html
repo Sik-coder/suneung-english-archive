@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생활과 윤리 개념 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC; --paper-2:#FFFFFF; --ink:#26382F;
+    --plum:#6B4A7A; --plum-soft:#8d6b9c; --red:#C8402F;
+    --hl:#FCE38A; --hl-line:#F2C94C; --muted:#8A8578;
+    --line:#E4DFD2; --shadow:0 2px 10px rgba(38,56,47,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;padding-bottom:60px;}
+  a{color:inherit;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+
+  header{background:var(--plum);color:#fff;padding:28px 0 24px;border-bottom:5px solid var(--hl-line);}
+  .back{display:inline-block;font-size:12.5px;color:var(--hl);text-decoration:none;margin-bottom:8px;}
+  .back:hover{opacity:.85;}
+  header h1{font-size:26px;font-weight:900;}
+  header p{font-size:13px;color:#e2d6e8;margin-top:4px;}
+
+  .progress-box{background:var(--paper-2);border-radius:14px;box-shadow:var(--shadow);
+    margin:-18px auto 22px;position:relative;z-index:2;padding:18px 22px;
+    display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .stat{display:flex;flex-direction:column;}
+  .stat .n{font-size:26px;font-weight:900;color:var(--plum);line-height:1;}
+  .stat .n small{font-size:14px;color:var(--muted);font-weight:500;}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:4px;}
+  .bar-wrap{flex:1;min-width:170px;}
+  .bar-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
+  .bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;}
+  .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-line),var(--plum-soft));transition:width .4s;}
+
+  .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+  .filters button{font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+    padding:6px 12px;border-radius:18px;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.13s;}
+  .filters button:hover{border-color:var(--plum-soft);}
+  .filters button.on{background:var(--plum);border-color:var(--plum);color:#fff;}
+
+  .unit{margin-bottom:26px;}
+  .unit-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--line);
+    padding-bottom:8px;margin-bottom:14px;}
+  .unit-head h2{font-size:19px;font-weight:900;}
+  .unit-head .cnt{font-size:12px;color:var(--muted);}
+
+  .topic{background:var(--paper-2);border-radius:13px;box-shadow:var(--shadow);
+    padding:18px 20px;margin-bottom:12px;border-left:5px solid var(--plum-soft);}
+  .topic.done{border-left-color:var(--hl-line);background:#fffdf6;}
+  .topic .thead{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .topic h3{font-size:16.5px;font-weight:900;}
+  .topic .chk{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+    cursor:pointer;padding:5px 11px;border-radius:16px;border:1.5px solid var(--line);
+    background:#fff;user-select:none;transition:.12s;color:var(--muted);}
+  .topic .chk:hover{border-color:var(--plum-soft);}
+  .topic .chk.on{background:var(--hl);border-color:var(--hl-line);color:#7a5c00;}
+  .topic .chk .box{width:14px;height:14px;border:1.5px solid var(--muted);border-radius:4px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:transparent;}
+  .topic .chk.on .box{background:var(--plum);border-color:var(--plum);color:#fff;}
+
+  .thinkers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+  .th{background:#faf8f3;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:13.5px;}
+  .th .name{font-weight:900;color:var(--plum);display:block;margin-bottom:2px;}
+  .th .claim{color:#4a5751;line-height:1.55;}
+  .th .key{background:var(--hl);border-radius:3px;padding:0 3px;font-weight:700;}
+
+  .compare{margin-top:10px;background:#fffdf6;border:1px dashed var(--hl-line);
+    border-radius:9px;padding:10px 13px;font-size:13px;line-height:1.65;}
+  .compare b{color:var(--plum);}
+  .compare .lbl{font-weight:900;color:var(--ink);font-size:12px;display:block;margin-bottom:3px;}
+  .compare .lbl2{display:inline-block;font-size:11px;font-weight:900;background:var(--plum);color:#fff;border-radius:10px;padding:1px 8px;margin:3px 4px 3px 0;}
+
+  .memo{width:100%;margin-top:10px;border:none;border-bottom:1px dashed var(--line);
+    background:transparent;font-family:'Gaegu',cursive;font-size:15px;color:var(--plum);padding:3px 2px;}
+  .memo::placeholder{color:#c3bdae;}
+  .memo:focus{outline:none;border-bottom-color:var(--hl-line);}
+
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:13px;padding:26px;
+    text-align:center;color:var(--muted);font-size:13.5px;}
+
+  footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);line-height:1.7;}
+  footer code{background:#efeade;padding:1px 6px;border-radius:4px;font-size:12px;}
+
+  @media(max-width:640px){.thinkers{grid-template-columns:1fr;}header h1{font-size:22px;}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="../index.html">← 공부방으로</a>
+    <h1>생활과 윤리 · 개념 정리</h1>
+    <p>단원별 핵심 개념 · 사상가 비교 · 진도 체크</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="progress-box">
+    <div class="stat"><span class="n" id="doneN">0<small>/0</small></span><span class="l">정리 완료 주제</span></div>
+    <div class="bar-wrap">
+      <div class="bar-label"><span>개념 진도</span><span id="pctN">0%</span></div>
+      <div class="bar"><span id="barFill"></span></div>
+    </div>
+  </div>
+
+  <div class="filters" id="filters"></div>
+  <div id="units"></div>
+
+  <footer>
+    <b>개념 추가하기</b> — 이 파일 <code>&lt;script&gt;</code> 안의 <code>TOPICS</code> 배열에 항목을 추가하면 카드가 생깁니다.<br>
+    <code>u</code>=단원, <code>t</code>=주제명, <code>thinkers</code>=사상가별 핵심 주장, <code>compare</code>=비교 포인트.<br>
+    진도 체크·메모는 이 브라우저에 자동 저장됩니다.
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   생활과 윤리 개념 데이터 — 여기에 계속 추가하면 됩니다.
+   u        = 단원명
+   t        = 주제
+   thinkers = [{ n:"사상가", c:"핵심 주장 (<b>키워드</b>로 강조)" }, ...]
+   compare  = 비교·함정 포인트 (선택)
+   ===================================================================== */
+const TOPICS = [
+  {
+    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
+    t:"윤리(윤리학)란 무엇인가",
+    thinkers:[
+      { n:"어원", c:"ethics(성격·품성·태도) / moral(지켜야 할 도리) / 한자 倫理(인륜의 이치)" },
+      { n:"정의", c:"인간이 <b>지켜야 할 행위의 기준·규범</b>을 다루는 학문" },
+      { n:"성격 ①", c:"<b>가치 판단</b> — 사실 판단이 아님 ('~이다'가 아니라 '~해야 한다')" },
+      { n:"성격 ②", c:"<b>당위적</b>(마땅히 해야 함) · <b>실천 지향적</b>(행동으로 이어짐) · 평가적" }
+    ],
+    compare:"윤리는 <b>사실 판단</b>이 아니라 <b>가치 판단</b>이다. '무엇인가(사실)'를 기술하는 게 아니라 '무엇을 해야 하는가(당위)'를 다룬다는 점이 출발점."
+  },
+  {
+    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
+    t:"윤리학의 분류 ★",
+    thinkers:[
+      { n:"이론(규범) 윤리학", c:"<b>기준</b>을 탐구 → 원리·원칙·품성을 다룸. '지켜야 할 행위의 기준'을 제시" },
+      { n:"실천(규범) 윤리학", c:"<b>적용·실천·해결</b> → 이론을 구체적 문제에 적용. <b>학제적</b> 성격" },
+      { n:"기술 윤리학", c:"<b>관습(풍습)·경험·기술</b> → <b>객관적·과학적·가치중립적</b>으로 도덕 현상을 기술" },
+      { n:"메타 윤리학", c:"<b>용어·언어·추론·논리·학문 성립 가능성</b> → 윤리학 자체를 연구. <b>객관적·과학적·가치중립적</b>" }
+    ],
+    compare:"<span class='lbl2'>규범적 성격 있음</span> 이론 윤리학 · 실천 윤리학 (둘은 <b>유기적 관계</b> — 이론을 실천에 적용)<br><span class='lbl2'>규범적 성격 없음(↓)</span> 기술 윤리학 · 메타 윤리학 — 둘 다 <b>가치중립적</b>이라 '이래야 한다'를 말하지 않음. 이 둘을 규범 윤리로 착각하는 게 단골 함정."
+  },
+  {
+    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
+    t:"도덕적 탐구",
+    thinkers:[
+      { n:"삼단 논법 구조", c:"<b>대전제(도덕 원리)</b> → <b>소전제(사실 판단)</b> → <b>결론(도덕 판단)</b>" },
+      { n:"탐구 과정", c:"쟁점·딜레마 파악 → 자료 수집 → 입장 채택 → <b>최선의 대안 도출</b> → <b>성찰</b>" }
+    ],
+    compare:"도덕 판단은 <b>도덕 원리 + 사실 판단</b>이 결합해 나온다. 원리만으로도, 사실만으로도 도덕 판단이 나오지 않는다는 게 핵심."
+  },
+  {
+    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
+    t:"도덕적 성찰",
+    thinkers:[
+      { n:"소크라테스", c:"명예·성공보다 <b>성찰</b>이 중요. '성찰하지 않는 삶은 살 가치가 없다'" },
+      { n:"아리스토텔레스", c:"<b>중용</b>의 <b>지속적 실천·습관화</b>. 지나침(과도)도 모자람(부족)도 아닌 상태<br>※ 용기 = 두려워할 것을 두려워하는 것 (두려움이 아예 없는 게 아님)" },
+      { n:"밀", c:"<b>토론</b>을 통한 성찰. <b>소수 의견도 진리 발견에 기여</b>한다" }
+    ],
+    compare:"아리스토텔레스의 <b>중용</b>은 '감정이 없는 상태'가 아니라 <b>적절한 정도</b>. 용기는 두려움이 없는 게 아니라 <b>두려워할 것을 두려워하는 것</b> — 비겁(모자람)과 만용(지나침) 사이."
+  }
+];
+
+const $ = id => document.getElementById(id);
+const KEY = "ethics-done";
+const store = {
+  all(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } },
+  key(tp){ return tp.u + "|" + tp.t; },
+  is(tp){ return !!this.all()[this.key(tp)]; },
+  toggle(tp){ const a=this.all(); const k=this.key(tp);
+    if(a[k]) delete a[k]; else a[k]=1;
+    localStorage.setItem(KEY, JSON.stringify(a)); }
+};
+
+let filter = "all";
+
+function units(){
+  const set = [];
+  TOPICS.forEach(t => { if(!set.includes(t.u)) set.push(t.u); });
+  return set;
+}
+
+function buildFilters(){
+  const box = $("filters");
+  box.innerHTML = "";
+  ["all", ...units()].forEach(u => {
+    const b = document.createElement("button");
+    const n = (u==="all") ? TOPICS.length : TOPICS.filter(t=>t.u===u).length;
+    b.textContent = (u==="all" ? "전체" : u) + ` (${n})`;
+    b.className = (u===filter ? "on" : "");
+    b.onclick = () => { filter = u; render(); };
+    box.appendChild(b);
+  });
+}
+
+function render(){
+  buildFilters();
+  const host = $("units");
+  host.innerHTML = "";
+  const list = (filter==="all") ? TOPICS : TOPICS.filter(t=>t.u===filter);
+
+  if(list.length===0){
+    host.innerHTML = `<div class="empty">아직 정리된 개념이 없어요.</div>`;
+    updateProgress(); return;
+  }
+
+  const byUnit = {};
+  list.forEach(t => { if(!byUnit[t.u]) byUnit[t.u]=[]; byUnit[t.u].push(t); });
+
+  Object.keys(byUnit).forEach(u => {
+    const sec = document.createElement("div");
+    sec.className = "unit";
+    sec.innerHTML = `<div class="unit-head"><h2>${u}</h2>
+      <span class="cnt">${byUnit[u].length}개 주제</span></div>`;
+
+    byUnit[u].forEach(tp => {
+      const done = store.is(tp);
+      const card = document.createElement("div");
+      card.className = "topic" + (done ? " done" : "");
+      const ths = (tp.thinkers||[]).map(t =>
+        `<div class="th"><span class="name">${t.n}</span><span class="claim">${
+          t.c.replace(/<b>/g,'<span class="key">').replace(/<\/b>/g,'</span>')
+        }</span></div>`).join("");
+      card.innerHTML = `
+        <div class="thead">
+          <h3>${tp.t}</h3>
+          <div class="chk ${done?"on":""}"><span class="box">✓</span>정리 완료</div>
+        </div>
+        <div class="thinkers">${ths}</div>
+        ${tp.compare?`<div class="compare"><span class="lbl">⚡ 비교 · 함정 포인트</span>${
+          tp.compare.replace(/<b>/g,'<b>').replace(/<\/b>/g,'</b>')
+        }</div>`:""}
+        <input class="memo" placeholder="메모 · 헷갈리는 부분, 기출 포인트…" value="${(memoOf(tp)||"").replace(/"/g,"&quot;")}">
+      `;
+      card.querySelector(".chk").addEventListener("click", () => { store.toggle(tp); render(); });
+      const memo = card.querySelector(".memo");
+      memo.addEventListener("input", () => setMemo(tp, memo.value));
+      sec.appendChild(card);
+    });
+    host.appendChild(sec);
+  });
+  updateProgress();
+}
+
+function memoOf(tp){
+  try{ return (JSON.parse(localStorage.getItem("ethics-memo"))||{})[store.key(tp)] || ""; }
+  catch(e){ return ""; }
+}
+function setMemo(tp,v){
+  let m={}; try{ m = JSON.parse(localStorage.getItem("ethics-memo"))||{}; }catch(e){}
+  m[store.key(tp)] = v;
+  localStorage.setItem("ethics-memo", JSON.stringify(m));
+}
+
+function updateProgress(){
+  const total = TOPICS.length;
+  const done = TOPICS.filter(t=>store.is(t)).length;
+  $("doneN").innerHTML = done + `<small>/${total}</small>`;
+  const pct = total ? Math.round(done/total*100) : 0;
+  $("pctN").textContent = pct + "%";
+  $("barFill").style.width = pct + "%";
+}
+
+render();
+</script>
+</body>
+</html>
