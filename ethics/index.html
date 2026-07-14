@@ -126,6 +126,19 @@
   .cell .r{color:var(--red);font-weight:700;}
   .cell .sub{display:block;color:#6E6C66;font-size:11.5px;margin-top:2px;}
   .cell .star{color:var(--red);font-weight:900;}
+  .cell .ref{display:inline-block;font-size:10px;font-weight:900;background:#DAD6EF;color:#4A4290;
+    border-radius:8px;padding:1px 7px;margin-right:4px;vertical-align:1px;}
+  .cell.dao .ref{background:#C7EADC;color:#0B5B48;}
+  .branch{margin:7px 0 9px;padding-left:9px;border-left:2.5px solid #C9C5F2;}
+  .branch .br{display:flex;gap:8px;padding:5px 0;border-bottom:1px dashed #E0DDF3;}
+  .branch .br:last-child{border-bottom:none;}
+  .branch .bn{flex:0 0 128px;font-weight:900;color:#3C3489;font-size:12px;line-height:1.5;}
+  .branch .bd{flex:1;font-size:11.5px;color:#5A5687;line-height:1.6;}
+  .branch .bd .vs{display:block;color:var(--red);font-weight:700;margin-top:2px;}
+  .branch .bd .q{display:block;color:#6E6C8A;margin-top:3px;padding-left:2px;font-size:11px;}
+  .branch .bd i{font-style:normal;color:#8A8578;}
+  .tagi{display:inline-block;font-size:10px;font-weight:900;border-radius:8px;padding:0 6px;margin-left:3px;}
+  .tagi.c{background:#7F77DD;color:#fff;}
   .cmp td.gapc{padding-right:7px;}
 
   /* 불교 세로 흐름 */
@@ -213,6 +226,8 @@
     .cell.dao::before{content:"도가";display:block;font-weight:900;color:#085041;margin-bottom:3px;font-size:11.5px;}
     .brow{flex-direction:column;gap:5px;}
     .bk{width:100%;}
+    .branch .br{flex-direction:column;gap:2px;}
+    .branch .bn{flex:none;}
   }
 </style>
 </head>
@@ -359,7 +374,6 @@
               <td class="rowk"><div class="rk">도</div></td>
               <td class="gapc"><div class="cell confu">
                 <b>하늘</b> — 천도 · 천리 · 천명 <span class="r">→ 천인합일</span>
-                <span class="sub">무력 통치 = 패도 ↔ <b>왕도</b> 주장</span>
               </div></td>
               <td><div class="cell dao">
                 <b>우주 자연의 순리</b> — 스스로 그러함 <b>(무위 · 자연)</b>
@@ -370,7 +384,8 @@
               <td class="rowk"><div class="rk">성</div></td>
               <td class="gapc"><div class="cell confu">
                 <b>맹자 (성선)</b> → 불인인지심 / 양지·양능 / 사단·사덕<br>
-                <span class="r">⇒ 유지 · 보존 · 확충 · 실천</span><br>
+                <span class="r">⇒ 유지 · 보존 · 확충 · 실천</span>
+                <span class="sub">무력 통치 = <b>패도</b> ↔ <b>왕도</b> 주장</span>
                 <b>순자 (성악)</b> → <span class="r">변화(교화)</span>
               </div></td>
               <td><div class="cell dao">
@@ -380,11 +395,16 @@
             <tr>
               <td class="rowk"><div class="rk">덕</div></td>
               <td class="gapc"><div class="cell confu">
-                <b>인(仁)</b> → 인격체의 인간다움 / <span class="u">도덕성</span> / 사랑<br>
-                <span class="r">└ 시비선악 분별</span> · <b>존비친소 분별(별애)</b> <span class="star">↔ 겸애(묵가)</span><br>
-                <span class="r">└ 점진적 확대</span> · <b>효제 / 충서</b><br>
-                <span class="sub">추기급인 — 기소불욕 물시어인 / 기욕립이립인 기욕달이달인</span>
-                <b>예(禮)</b> → 외면적 사회규범 → 비례물시·청·언·동
+                <b>인(仁)</b> → 인격체의 인간다움 / <span class="u">도덕성</span> / <b>사랑</b>
+                <div class="branch">
+                  <div class="br"><span class="bn">시비선악 분별</span><span class="bd">옳고 그름·선악을 <b>가린다</b>. 무조건적 사랑이 아님</span></div>
+                  <div class="br"><span class="bn">존비친소 분별 <span class="tagi c">별애</span></span><span class="bd">가까운 사람부터 <b>차등적</b>으로 사랑<br><span class="vs">↔ <b>겸애</b>(묵가) — 차별 없이 똑같이 사랑</span></span></div>
+                  <div class="br"><span class="bn">점진적 확대</span><span class="bd">가족 → 이웃 → 사회로 <b>넓혀 나감</b></span></div>
+                  <div class="br"><span class="bn">효제 / 충서</span><span class="bd"><b>효제</b> = 부모께 효, 형제간 우애 (인의 <b>출발점</b>)<br><b>충서</b> → <b>추기급인</b>(자기를 미루어 남에게 미침)<br>
+                    <span class="q">· <b>서(恕)</b> 기소불욕 물시어인 — 내가 원치 않는 바를 남에게 베풀지 말라 <i>(소극적)</i></span>
+                    <span class="q">· <b>충(忠)</b> 기욕립이립인 기욕달이달인 — 내가 서고자 하면 남을 세우고, 통달하고자 하면 남을 통달케 하라 <i>(적극적)</i></span></span></div>
+                </div>
+                <b>예(禮)</b> → 외면적 사회규범 → 비례물시·물청·물언·물동
                 <span class="sub">→ 예악 (예법과 음악)</span>
               </div></td>
               <td><div class="cell dao">
@@ -408,11 +428,11 @@
             <tr>
               <td class="rowk"><div class="rk">지</div></td>
               <td class="gapc"><div class="cell confu">
-                <span class="star">★</span> <b>학이시습지 불역열호</b>
+                <span class="ref">참고</span> <b>학이시습지 불역열호</b>
                 <span class="sub">배움을 쌓아감 (益)</span>
               </div></td>
               <td><div class="cell dao">
-                <span class="star">★</span> <b><span class="u">위학일익 위도일손</span></b>
+                <span class="ref">참고</span> <b><span class="u">위학일익 위도일손</span></b>
                 <span class="sub"><span class="r">덜어냄 · 비움 · 버림 (損)</span></span>
               </div></td>
             </tr>
@@ -567,26 +587,30 @@ const TOPICS = [
     body:`<b>도(道) — 하늘</b>
       <ul>
         <li><b>천도 · 천리 · 천명</b> — 하늘이 곧 도덕의 근원. <b>천인합일</b>(하늘과 인간이 하나)</li>
-        <li>정치로는 <b>왕도(덕으로 다스림)</b>를 주장하고 <b>패도(무력 통치)</b>를 배격</li>
       </ul>
       <b>성(性) — 본성론</b>
       <ul>
         <li><b>맹자 (성선설)</b> — <b>불인인지심</b>(차마 남을 해치지 못하는 마음), <b>양지·양능</b>(배우지 않아도 아는 앎과 능력), <b>사단 → 사덕</b><br>
-          ⇒ 본래 있는 선한 싹을 <b>유지 · 보존 · 확충 · 실천</b>한다</li>
+          ⇒ 본래 있는 선한 싹을 <b>유지 · 보존 · 확충 · 실천</b>한다<br>
+          ⇒ 정치로는 <b>왕도(덕으로 다스림)</b>를 주장하고 <b>패도(무력 통치)</b>를 배격</li>
         <li><b>순자 (성악설)</b> — 본성은 악하니 <b>교화(변화)</b>가 필요. 예(禮)로써 바로잡음</li>
       </ul>
       <b>덕(德) — 인(仁)과 예(禮)</b>
       <ul>
-        <li><b>인(仁)</b> = 인격체의 <b>인간다움</b> · 도덕성 · 사랑. <b>내면적</b> 덕</li>
+        <li><b>인(仁)</b> = 인격체의 <b>인간다움</b> · 도덕성 · <b>사랑</b>. <b>내면적</b> 덕</li>
         <li><b>예(禮)</b> = <b>외면적</b> 사회규범. <b>비례물시·물청·물언·물동</b>(예가 아니면 보지·듣지·말하지·행하지 말라) → <b>예악</b>(예법과 음악)</li>
       </ul>`,
-    dsec:{ lb:"인(仁)의 실천 방법", html:`<ul>
-        <li><b>시비선악 분별</b> — 인은 무조건적 사랑이 아니라 <b>옳고 그름을 가린다</b></li>
-        <li><b>존비친소 분별 = 별애(別愛)</b> — 가까운 사람부터 <b>차등적으로</b> 사랑. <b>점진적 확대</b></li>
-        <li><b>효제</b>(부모 형제에 대한 도리) · <b>충서</b>(忠恕)</li>
-        <li><b>추기급인</b>(자기를 미루어 남에게 미침)<br>
-          — <b>기소불욕 물시어인</b>: 내가 원하지 않는 바를 남에게 베풀지 말라 <span style="color:#8A8578;">(서恕 · 소극적)</span><br>
-          — <b>기욕립이립인 기욕달이달인</b>: 내가 서고자 하면 남을 세우고, 내가 통달하고자 하면 남을 통달케 하라 <span style="color:#8A8578;">(충忠 · 적극적)</span></li>
+    dsec:{ lb:"인(仁) — 유교의 사랑은 어떤 사랑인가", html:`인(仁)은 곧 <b>사랑</b>이지만, 아무 조건 없는 사랑이 아니다. 네 가지 성격이 있다.
+      <ul>
+        <li><b>① 시비선악 분별</b> — 옳고 그름, 선과 악을 <b>가린다</b>. 잘못을 저지른 사람까지 무조건 감싸는 것이 아니라, <b>미워할 것은 미워할 줄 아는</b> 사랑이다</li>
+        <li><b>② 존비친소 분별 = 별애(別愛)</b> — 신분의 높낮이(존비)와 관계의 멀고 가까움(친소)을 <b>구별</b>한다. 부모를 남보다 더 사랑하는 것이 자연스럽고 마땅하다는 입장. <b>차등적 사랑</b><br>
+          <span style="color:#C8402F;font-weight:700;">↔ 묵가의 겸애(兼愛)</span> — 차별 없이 <b>똑같이</b> 사랑하라. 유교는 이를 <b>현실적이지 않다</b>고 비판</li>
+        <li><b>③ 점진적 확대</b> — 사랑은 <b>가족 → 이웃 → 사회 → 천하</b>로 <b>넓혀 나가는</b> 것. 처음부터 만인을 똑같이 사랑하는 게 아니라 <b>가까운 데서 시작</b>한다</li>
+        <li><b>④ 효제 / 충서</b> — 실천의 구체적 방법<br>
+          · <b>효제(孝悌)</b> = 부모께 효도하고 형제간에 우애. <b>인의 출발점(근본)</b><br>
+          · <b>충서(忠恕)</b> = <b>추기급인</b>(推己及人, 자기를 미루어 남에게 미침)의 두 축<br>
+          &nbsp;&nbsp;&nbsp;— <b>서(恕)</b> · <b>기소불욕 물시어인</b>: 내가 원하지 않는 바를 남에게 베풀지 말라 <span style="color:#8A8578;">(소극적 — 하지 말아야 할 것)</span><br>
+          &nbsp;&nbsp;&nbsp;— <b>충(忠)</b> · <b>기욕립이립인 기욕달이달인</b>: 내가 서고자 하면 남을 세워주고, 내가 통달하고자 하면 남을 통달케 하라 <span style="color:#8A8578;">(적극적 — 해야 할 것)</span></li>
       </ul>` },
     trap:`<b>★ 별애(유교) ↔ 겸애(묵가)</b> — 시험 단골 대비.<br>
       <b>유교의 인</b> = <b>존비친소를 분별</b>하는 <b>차등적</b> 사랑(별애). 가까운 데서 시작해 넓혀감<br>
@@ -602,7 +626,7 @@ const TOPICS = [
         <li><b>성(誠)</b>(진실무망) · <b>경(敬)</b>(마음을 한 곳에 집중, 흐트러짐 없음)</li>
         <li>이상적 인간: <b>성인 · 군자 · 대인 · 대장부</b></li>
       </ul>
-      <b>지(知) — 앎의 태도</b>
+      <b>지(知) — 앎의 태도</b> <span style="color:#8A8578;font-size:12px;">(참고)</span>
       <ul>
         <li><b>학이시습지 불역열호</b> — 배우고 때때로 익히면 또한 기쁘지 아니한가<br>
           ⇒ 유교는 배움을 <b>쌓아간다(益)</b></li>
@@ -652,7 +676,7 @@ const TOPICS = [
     trap:`<b>★ 유교 ↔ 도가 정면 대비 (최다 출제)</b><br>
       <span class="tag c">유교</span> 인위적 규범(예)을 <b>긍정</b> · 분별(별애)을 <b>인정</b> · 배움을 <b>쌓는다(益)</b><br>
       <span class="tag d">도가</span> 인위를 <b>부정</b> · 제물(만물 평등, 분별 없음) · <b>덜어낸다(損)</b><br><br>
-      <b>지(知)의 대비가 핵심</b> — 유교 <b>「학이시습지 불역열호」</b>(쌓음) ↔ 도가 <b>「위학일익 위도일손」</b>(덜어냄). 이 한 쌍만 잡아도 두 사상의 방향이 갈린다.`
+      <b>지(知)의 대비</b> <span style="color:#8A8578;">(참고)</span> — 유교 <b>「학이시습지 불역열호」</b>(쌓음 益) ↔ 도가 <b>「위학일익 위도일손」</b>(덜어냄 損). 두 사상의 방향을 보여주는 한 쌍.`
   },
   {
     u:U2, t:"불교 — 연기 · 무아 · 사성제",
