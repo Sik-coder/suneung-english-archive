@@ -11,7 +11,7 @@
   :root{
     --paper:#F7F4EC; --paper-2:#FFFFFF; --ink:#26382F;
     --plum:#6B4A7A; --plum-soft:#8d6b9c;
-    --teal:#1D9E75; --red:#C8402F;
+    --teal:#1D9E75; --amber:#A8690F; --red:#C8402F;
     --hl:#FCE38A; --hl-line:#F2C94C; --muted:#8A8578;
     --line:#E4DFD2; --shadow:0 2px 10px rgba(38,56,47,.07);
   }
@@ -44,27 +44,29 @@
   .filters button:hover{border-color:var(--plum-soft);}
   .filters button.on{background:var(--plum);border-color:var(--plum);color:#fff;}
 
-  /* ===== 개념 지도 ===== */
+  /* ===== 개념 지도 공통 ===== */
   .map{background:var(--paper-2);border-radius:16px;box-shadow:var(--shadow);
     padding:24px 26px 20px;margin-bottom:16px;border-top:5px solid var(--plum);}
+  .map.hide{display:none;}
   .map > h2{font-size:19px;font-weight:900;}
   .map > .cap{font-size:12.5px;color:var(--muted);margin:2px 0 20px;}
-
   .sec{margin-bottom:18px;}
+  .sec:last-child{margin-bottom:0;}
   .lbl{display:inline-block;background:#26382F;color:#fff;font-size:13px;font-weight:900;
     border-radius:6px;padding:4px 12px;margin-bottom:9px;}
   .lbl.p{background:var(--plum);} .lbl.t{background:var(--teal);}
-  .lbl.c{background:#C0502A;} .lbl.a{background:#A8690F;}
+  .lbl.c{background:#C0502A;} .lbl.a{background:var(--amber);}
+  .u{border-bottom:2px solid var(--hl-line);padding-bottom:1px;font-weight:900;}
+  .strike{text-decoration:line-through;color:#aaa69c;}
+  .hl{background:var(--hl);border-radius:3px;padding:0 3px;font-weight:700;color:#5c4400;}
+  .x{color:var(--red);font-weight:900;}
 
-  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;}
+  .flow{display:flex;align-items:stretch;flex-wrap:wrap;}
   .box{background:#fff;border:1.5px solid #D3D1C7;border-radius:10px;padding:11px 15px;}
   .box .bt{font-size:14px;font-weight:900;}
   .box .bs{font-size:12.5px;color:#5F5E5A;margin-top:3px;line-height:1.6;}
   .arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);
     font-size:18px;padding:0 10px;flex-shrink:0;}
-  .u{border-bottom:2px solid var(--hl-line);padding-bottom:1px;font-weight:900;}
-  .strike{text-decoration:line-through;color:#aaa69c;}
-  .hl{background:var(--hl);border-radius:3px;padding:0 3px;font-weight:700;color:#5c4400;}
 
   .two{display:flex;gap:12px;align-items:stretch;}
   .two .col{flex:1;min-width:0;}
@@ -106,6 +108,37 @@
   .scale .mid{background:var(--red);color:#fff;border-color:var(--red);}
   .scale .ar{border:none;background:none;color:var(--muted);font-weight:400;padding:0;}
 
+  /* ===== 유교 vs 도가 대조표 ===== */
+  .cmp{width:100%;border-collapse:separate;border-spacing:0 7px;}
+  .cmp th{font-size:13.5px;font-weight:900;padding:7px 12px;border-radius:8px;text-align:left;}
+  .cmp th.rowk{width:74px;background:transparent;}
+  .cmp th.confu{background:#EEEDFE;color:#3C3489;border:1.5px solid #7F77DD;}
+  .cmp th.dao{background:#E1F5EE;color:#085041;border:1.5px solid #1D9E75;}
+  .cmp td{vertical-align:top;padding:0;}
+  .cmp td.rowk{width:74px;padding-right:8px;}
+  .rk{display:flex;align-items:center;justify-content:center;height:100%;min-height:46px;
+    background:#26382F;color:#fff;border-radius:8px;font-size:13px;font-weight:900;padding:6px 4px;
+    text-align:center;line-height:1.3;}
+  .cell{border-radius:9px;padding:9px 12px;font-size:12.5px;line-height:1.65;height:100%;}
+  .cell.confu{background:#F6F5FF;border:1.5px solid #C9C5F2;color:#3C3489;}
+  .cell.dao{background:#F0FBF7;border:1.5px solid #A9DFCC;color:#0B5B48;}
+  .cell b{font-weight:900;}
+  .cell .r{color:var(--red);font-weight:700;}
+  .cell .sub{display:block;color:#6E6C66;font-size:11.5px;margin-top:2px;}
+  .cell .star{color:var(--red);font-weight:900;}
+  .cmp td.gapc{padding-right:7px;}
+
+  /* 불교 세로 흐름 */
+  .bud{display:flex;flex-direction:column;gap:7px;}
+  .brow{display:flex;gap:9px;align-items:stretch;}
+  .bk{width:88px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--amber);color:#fff;border-radius:8px;font-size:12.5px;font-weight:900;
+    text-align:center;padding:6px 4px;line-height:1.3;}
+  .bv{flex:1;background:#FDF6E9;border:1.5px solid #EBC98B;border-radius:9px;
+    padding:9px 13px;font-size:12.5px;line-height:1.7;color:#6B4708;}
+  .bv b{font-weight:900;color:#5A3B06;}
+  .bv .r{color:var(--red);font-weight:700;}
+
   /* ===== 접히는 상세 ===== */
   .more{margin-bottom:26px;}
   .toggle{width:100%;background:var(--paper-2);border:1.5px solid var(--line);
@@ -118,11 +151,16 @@
   .details{display:none;margin-top:12px;}
   .details.open{display:block;}
 
+  .unit-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--line);
+    padding-bottom:8px;margin:20px 0 12px;}
+  .unit-head h3{font-size:16px;font-weight:900;}
+  .unit-head .cnt{font-size:12px;color:var(--muted);}
+
   .topic{background:var(--paper-2);border-radius:13px;box-shadow:var(--shadow);
     padding:18px 20px;margin-bottom:12px;border-left:5px solid var(--plum-soft);}
   .topic.done{border-left-color:var(--hl-line);background:#fffdf6;}
   .topic .thead{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
-  .topic h3{font-size:16px;font-weight:900;}
+  .topic h4{font-size:16px;font-weight:900;}
   .topic .chk{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
     cursor:pointer;padding:5px 11px;border-radius:16px;border:1.5px solid var(--line);
     background:#fff;user-select:none;transition:.12s;color:var(--muted);}
@@ -146,6 +184,9 @@
   .tag{display:inline-block;font-size:11px;font-weight:900;border-radius:10px;padding:1px 9px;margin:2px 4px 2px 0;}
   .tag.yes{background:var(--plum);color:#fff;}
   .tag.no{background:var(--teal);color:#fff;}
+  .tag.c{background:#7F77DD;color:#fff;}
+  .tag.d{background:var(--teal);color:#fff;}
+  .tag.b{background:var(--amber);color:#fff;}
 
   .memo{width:100%;margin-top:10px;border:none;border-bottom:1px dashed var(--line);
     background:transparent;font-family:'Gaegu',cursive;font-size:15px;color:var(--plum);padding:3px 2px;}
@@ -162,7 +203,16 @@
     .arrow{padding:6px 0;transform:rotate(90deg);}
     .flow > .box{width:100% !important;flex:none !important;}
     header h1{font-size:21px;}
-    .map{padding:18px 16px 16px;}
+    .map{padding:18px 14px 16px;}
+    .cmp, .cmp tbody, .cmp tr, .cmp td, .cmp th{display:block;width:100%;}
+    .cmp thead{display:none;}
+    .cmp td.rowk{width:100%;padding:0 0 5px;}
+    .rk{min-height:0;padding:5px;}
+    .cmp td.gapc{padding:0 0 6px;}
+    .cell.confu::before{content:"유교";display:block;font-weight:900;color:#3C3489;margin-bottom:3px;font-size:11.5px;}
+    .cell.dao::before{content:"도가";display:block;font-weight:900;color:#085041;margin-bottom:3px;font-size:11.5px;}
+    .brow{flex-direction:column;gap:5px;}
+    .bk{width:100%;}
   }
 </style>
 </head>
@@ -187,123 +237,279 @@
 
   <div class="filters" id="filters"></div>
 
-  <div class="map">
-    <h2>1장 · 실천 윤리와 윤리 문제에 대한 탐구</h2>
-    <div class="cap">윤리의 의미 → 윤리학의 분류 → 도덕적 탐구 → 도덕적 성찰</div>
+  <div id="maps">
 
-    <div class="sec">
-      <span class="lbl">윤리</span>
-      <div class="flow">
-        <div class="box" style="width:280px;">
-          <div class="bt">ethics / moral / 倫理</div>
-          <div class="bs">성격·품성·태도 / 지켜야 할 도리 / 인륜의 이치</div>
+    <!-- ================= 1장 ================= -->
+    <div class="map" data-unit="1장 · 실천 윤리와 윤리 문제에 대한 탐구">
+      <h2>1장 · 실천 윤리와 윤리 문제에 대한 탐구</h2>
+      <div class="cap">윤리의 의미 → 윤리학의 분류 → 도덕적 탐구 → 도덕적 성찰</div>
+
+      <div class="sec">
+        <span class="lbl">윤리</span>
+        <div class="flow">
+          <div class="box" style="width:280px;">
+            <div class="bt">ethics / moral / 倫理</div>
+            <div class="bs">성격·품성·태도 / 지켜야 할 도리 / 인륜의 이치</div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="box" style="flex:1;min-width:280px;">
+            <div class="bt">인간이 지켜야 할 <span class="u">행위의 기준 · 규범</span></div>
+            <div class="bs">
+              <span class="strike">사실 판단</span> → <span class="hl">가치 판단</span> ·
+              <span class="hl">당위적</span>(마땅히 ~해야) ·
+              <span class="hl">실천 지향적</span>(행동으로) ·
+              <span class="hl">평가</span>(옳다/그르다 판정)
+            </div>
+          </div>
         </div>
-        <div class="arrow">→</div>
-        <div class="box" style="flex:1;min-width:280px;">
-          <div class="bt">인간이 지켜야 할 <span class="u">행위의 기준 · 규범</span></div>
-          <div class="bs">
-            <span class="strike">사실 판단</span> → <span class="hl">가치 판단</span> ·
-            <span class="hl">당위적</span>(마땅히 ~해야) ·
-            <span class="hl">실천 지향적</span>(행동으로) ·
-            <span class="hl">평가</span>(옳다/그르다 판정)
+      </div>
+
+      <div class="sec">
+        <span class="lbl p">윤리학의 분류 ★</span>
+        <div class="two" style="margin-bottom:10px;">
+          <div class="col">
+            <div class="grp norm">
+              <div class="gt">이론(규범) 윤리학</div>
+              <div class="gs"><b>기준</b> → 원리 · 원칙 · 품성<br>도덕 원리를 정당화 (공리주의·의무론·덕 윤리)</div>
+            </div>
+            <div class="grp norm">
+              <div class="gt">실천(규범) 윤리학</div>
+              <div class="gs"><b>적용 · 실천 · 해결</b> → <b>학제적</b><br>생명·성·환경·사회 문제에 적용</div>
+            </div>
+          </div>
+          <div class="side norm">적용 · 유기적 관계<br>규범적 성격 <b>있음</b></div>
+        </div>
+        <div class="two">
+          <div class="col">
+            <div class="grp neut">
+              <div class="gt">기술 윤리학</div>
+              <div class="gs"><b>관습(풍습) · 경험 · 기술</b><br>도덕 현상을 있는 그대로 조사·서술 (판단 ✕)</div>
+            </div>
+            <div class="grp neut">
+              <div class="gt">메타 윤리학</div>
+              <div class="gs"><b>용어 · 언어 · 추론 · 논리 · 학문 성립 가능성</b><br>윤리학 자체를 연구</div>
+            </div>
+          </div>
+          <div class="side neut">객관적 · 과학적<br>가치중립적<br>규범적 성격 <b>없음 ↓</b></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl c">도덕적 탐구</span>
+        <div class="syl">
+          <div class="s"><div class="n">대전제</div><div class="e">도덕 원리 · 당위</div></div>
+          <div class="arrow">→</div>
+          <div class="s"><div class="n">소전제</div><div class="e">사실 판단</div></div>
+          <div class="arrow">→</div>
+          <div class="s"><div class="n">결론</div><div class="e">도덕 판단</div></div>
+        </div>
+        <div class="steps">
+          <b>탐구 과정</b> &nbsp; 쟁점·딜레마 → 자료 → 입장 → <b>최선의 대안 도출</b> → <span class="u">성찰</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl a">도덕적 성찰</span>
+        <div class="th">
+          <div class="p">
+            <div class="pn">소크라테스</div>
+            <div class="pc">명예 · 성공 <b>&lt;</b> 성찰<br>"성찰하지 않는 삶은 살 가치가 없다" · 산파술</div>
+          </div>
+          <div class="p">
+            <div class="pn">아리스토텔레스</div>
+            <div class="pc"><b>중용</b>의 지속적 실천 · <b>습관화</b><br>지나침 ✕ · 모자람 ✕</div>
+          </div>
+          <div class="p">
+            <div class="pn">밀</div>
+            <div class="pc"><b>토론</b>을 통한 성찰<br>소수 의견도 진리 발견에 기여</div>
+          </div>
+        </div>
+        <div class="warn">
+          <div class="wt">★ 용기 = 중용</div>
+          용기란 <b>두려워할 것을 두려워하고, 두려워하지 않을 것을 두려워하지 않는 것</b>.
+          두려움이 <b>아예 없는 상태가 아니다</b> — 그건 만용(지나침). 안 두려워해도 될 걸 두려워하면 비겁(모자람).
+          <div class="scale">
+            <span>비겁 · 모자람</span>
+            <span class="ar">←</span>
+            <span class="mid">용기 · 중용</span>
+            <span class="ar">→</span>
+            <span>만용 · 지나침</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sec">
-      <span class="lbl p">윤리학의 분류 ★</span>
-      <div class="two" style="margin-bottom:10px;">
-        <div class="col">
-          <div class="grp norm">
-            <div class="gt">이론(규범) 윤리학</div>
-            <div class="gs"><b>기준</b> → 원리 · 원칙 · 품성<br>도덕 원리를 정당화 (공리주의·의무론·덕 윤리)</div>
-          </div>
-          <div class="grp norm">
-            <div class="gt">실천(규범) 윤리학</div>
-            <div class="gs"><b>적용 · 실천 · 해결</b> → <b>학제적</b><br>생명·성·환경·사회 문제에 적용</div>
-          </div>
-        </div>
-        <div class="side norm">적용 · 유기적 관계<br>규범적 성격 <b>있음</b></div>
+    <!-- ================= 2장 ================= -->
+    <div class="map" data-unit="2장 · 동양 윤리 (유교 · 도가 · 불교)" style="border-top-color:var(--teal);">
+      <h2>2장 · 동양 윤리 — 유교 · 도가 · 불교</h2>
+      <div class="cap">유교 ↔ 도가 대조 (도 → 성 → 덕 → 수양 → 지 → 이익 → 통치) · 불교 흐름</div>
+
+      <div class="sec">
+        <span class="lbl p">유교 ↔ 도가 대조 ★</span>
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th class="rowk"></th>
+              <th class="confu">유교</th>
+              <th class="dao">도가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rowk"><div class="rk">도</div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>하늘</b> — 천도 · 천리 · 천명 <span class="r">→ 천인합일</span>
+                <span class="sub">무력 통치 = 패도 ↔ <b>왕도</b> 주장</span>
+              </div></td>
+              <td><div class="cell dao">
+                <b>우주 자연의 순리</b> — 스스로 그러함 <b>(무위 · 자연)</b>
+                <span class="sub"><span class="r">무명 · 감각 초월 · 언어와 지식 초월</span></span>
+              </div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">성</div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>맹자 (성선)</b> → 불인인지심 / 양지·양능 / 사단·사덕<br>
+                <span class="r">⇒ 유지 · 보존 · 확충 · 실천</span><br>
+                <b>순자 (성악)</b> → <span class="r">변화(교화)</span>
+              </div></td>
+              <td><div class="cell dao">
+                (별도 성론 없음 — 자연 그대로의 본성을 <b>회복</b>)
+              </div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">덕</div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>인(仁)</b> → 인격체의 인간다움 / <span class="u">도덕성</span> / 사랑<br>
+                <span class="r">└ 시비선악 분별</span> · <b>존비친소 분별(별애)</b> <span class="star">↔ 겸애(묵가)</span><br>
+                <span class="r">└ 점진적 확대</span> · <b>효제 / 충서</b><br>
+                <span class="sub">추기급인 — 기소불욕 물시어인 / 기욕립이립인 기욕달이달인</span>
+                <b>예(禮)</b> → 외면적 사회규범 → 비례물시·청·언·동
+                <span class="sub">→ 예악 (예법과 음악)</span>
+              </div></td>
+              <td><div class="cell dao">
+                <span class="r">유교의 인간 기준 · 인위적 노력을 비판</span><br>
+                <b>인위 · 작위적 ↓ &nbsp; 무위 ↑</b>
+                <span class="sub"><span class="r">무지 = 순수하고 소박한 상태 → 무욕 → 무위</span></span>
+                <span class="r">⇒ 겸허 · 겸손 → 부쟁(다투지 않음)</span>
+              </div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">수양<br><span style="font-weight:500;font-size:10.5px;">(인간상)</span></div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>극기복례위인</b> / <b>수기안인</b> / <span class="r">성(誠) · 경(敬)</span>
+                <span class="sub">→ 이상적 인간: <b>성인 · 군자 · 대인 · 대장부</b></span>
+              </div></td>
+              <td><div class="cell dao">
+                <b>좌망 · 심재</b> ⇒ <b>소요유</b>
+                <span class="sub">(이상) <b>제물</b> — 만물이 평등함</span>
+              </div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">지</div></td>
+              <td class="gapc"><div class="cell confu">
+                <span class="star">★</span> <b>학이시습지 불역열호</b>
+                <span class="sub">배움을 쌓아감 (益)</span>
+              </div></td>
+              <td><div class="cell dao">
+                <span class="star">★</span> <b><span class="u">위학일익 위도일손</span></b>
+                <span class="sub"><span class="r">덜어냄 · 비움 · 버림 (損)</span></span>
+              </div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">이익</div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>도덕적 삶이 목적</b> ← 경제적 이익은 <b>토대·필요</b><br>
+                <b>견리사의</b> · 의(義)가 주(主), 이(利)가 종(從)<br>
+                <b>항산 · 항심</b> <span class="sub">도덕적 양성 ← 안정된 생업 (무항산 무항심)</span>
+              </div></td>
+              <td><div class="cell dao">—</div></td>
+            </tr>
+            <tr>
+              <td class="rowk"><div class="rk">통치</div></td>
+              <td class="gapc"><div class="cell confu">
+                <b>덕치 · 정명</b> → <b>대동사회</b>
+              </div></td>
+              <td><div class="cell dao">
+                <b>무위지치</b> → <b>소국과민</b>
+                <span class="sub"><span class="r">★ 불상현 사민부쟁</span> — 현자를 떠받들지 않아 백성이 다투지 않게</span>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="two">
-        <div class="col">
-          <div class="grp neut">
-            <div class="gt">기술 윤리학</div>
-            <div class="gs"><b>관습(풍습) · 경험 · 기술</b><br>도덕 현상을 있는 그대로 조사·서술 (판단 ✕)</div>
+
+      <div class="sec">
+        <span class="lbl a">불교</span>
+        <div class="bud">
+          <div class="brow">
+            <div class="bk">세계관</div>
+            <div class="bv">
+              <b>연기(緣起)</b> — 원인(因) + 조건(緣) = 결과(生起)<br>
+              <span class="r">→ 상호의존 → 독립적 존재 ✕ / 고정 · 불변 · 실체 ✕</span>
+            </div>
           </div>
-          <div class="grp neut">
-            <div class="gt">메타 윤리학</div>
-            <div class="gs"><b>용어 · 언어 · 추론 · 논리 · 학문 성립 가능성</b><br>윤리학 자체를 연구</div>
+          <div class="brow">
+            <div class="bk">인간관</div>
+            <div class="bv">
+              <b>오온의 가화합</b> <span class="r">→ 무아(無我) · 무상(無常)</span><br>
+              <b>불성</b>(누구나 부처가 될 씨앗)<br>
+              탐욕 · 집착 · 무지 → <b>고통</b> (생로병사)
+            </div>
+          </div>
+          <div class="brow">
+            <div class="bk">수양</div>
+            <div class="bv"><b>팔정도 · 육바라밀 · 중도</b> → 깨달음 · <b>지혜</b></div>
+          </div>
+          <div class="brow">
+            <div class="bk">이상적<br>경지</div>
+            <div class="bv"><b>열반 · 해탈</b> → <b>보살</b></div>
+          </div>
+          <div class="brow">
+            <div class="bk">정리</div>
+            <div class="bv">
+              <b>사성제</b> — 고 · 집 · 멸 · 도<br>
+              <b>삼법인</b> — 제행무상 · 제법무아 · 일체개고
+            </div>
+          </div>
+          <div class="brow">
+            <div class="bk">생사관</div>
+            <div class="bv">현생의 <b>업(業)</b> → 다음 생 → <b>윤회</b></div>
           </div>
         </div>
-        <div class="side neut">객관적 · 과학적<br>가치중립적<br>규범적 성격 <b>없음 ↓</b></div>
+        <div class="warn">
+          <div class="wt">★ 세 사상 한 줄 대비</div>
+          <b>유교</b> = 인위적 규범(예)을 <b>긍정</b> · 분별(별애)을 <b>인정</b> · <b>쌓는다(益)</b><br>
+          <b>도가</b> = 인위를 <b>부정</b> · 무위자연 · <b>덜어낸다(損)</b><br>
+          <b>불교</b> = 고정된 실체를 <b>부정</b>(무아·무상) · 연기와 자비
+        </div>
       </div>
     </div>
 
-    <div class="sec">
-      <span class="lbl c">도덕적 탐구</span>
-      <div class="syl">
-        <div class="s"><div class="n">대전제</div><div class="e">도덕 원리 · 당위</div></div>
-        <div class="arrow">→</div>
-        <div class="s"><div class="n">소전제</div><div class="e">사실 판단</div></div>
-        <div class="arrow">→</div>
-        <div class="s"><div class="n">결론</div><div class="e">도덕 판단</div></div>
-      </div>
-      <div class="steps">
-        <b>탐구 과정</b> &nbsp; 쟁점·딜레마 → 자료 → 입장 → <b>최선의 대안 도출</b> → <span class="u">성찰</span>
-      </div>
-    </div>
-
-    <div class="sec" style="margin-bottom:0;">
-      <span class="lbl a">도덕적 성찰</span>
-      <div class="th">
-        <div class="p">
-          <div class="pn">소크라테스</div>
-          <div class="pc">명예 · 성공 <b>&lt;</b> 성찰<br>"성찰하지 않는 삶은 살 가치가 없다" · 산파술</div>
-        </div>
-        <div class="p">
-          <div class="pn">아리스토텔레스</div>
-          <div class="pc"><b>중용</b>의 지속적 실천 · <b>습관화</b><br>지나침 ✕ · 모자람 ✕</div>
-        </div>
-        <div class="p">
-          <div class="pn">밀</div>
-          <div class="pc"><b>토론</b>을 통한 성찰<br>소수 의견도 진리 발견에 기여</div>
-        </div>
-      </div>
-      <div class="warn">
-        <div class="wt">★ 용기 = 중용</div>
-        용기란 <b>두려워할 것을 두려워하고, 두려워하지 않을 것을 두려워하지 않는 것</b>.
-        두려움이 <b>아예 없는 상태가 아니다</b> — 그건 만용(지나침). 안 두려워해도 될 걸 두려워하면 비겁(모자람).
-        <div class="scale">
-          <span>비겁 · 모자람</span>
-          <span class="ar">←</span>
-          <span class="mid">용기 · 중용</span>
-          <span class="ar">→</span>
-          <span>만용 · 지나침</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="more">
     <button class="toggle" id="tg" onclick="toggleDetails()">
-      <span class="ic">▾</span><span id="tgText">자세히 보기 · 상세 정리 4개</span>
+      <span class="ic">▾</span><span id="tgText">자세히 보기</span>
     </button>
     <div class="details" id="details"></div>
   </div>
 
   <footer>
-    <b>개념 추가하기</b> — 이 파일 <code>&lt;script&gt;</code> 안의 <code>TOPICS</code> 배열에 항목을 추가하면 상세 카드가 생깁니다.<br>
+    <b>개념 추가하기</b> — 이 파일 <code>&lt;script&gt;</code> 안의 <code>TOPICS</code> 배열에 항목을 추가하면 상세 카드가 생깁니다.
+    개념 지도는 <code>&lt;div class="map" data-unit="…"&gt;</code> 블록으로 단원마다 하나씩.<br>
     진도 체크·메모는 이 브라우저에 자동 저장됩니다.
   </footer>
 </div>
 
 <script>
+const U1 = "1장 · 실천 윤리와 윤리 문제에 대한 탐구";
+const U2 = "2장 · 동양 윤리 (유교 · 도가 · 불교)";
+
 const TOPICS = [
+  /* ===== 1장 ===== */
   {
-    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
-    t:"윤리(윤리학)의 의미",
+    u:U1, t:"윤리(윤리학)의 의미",
     body:`<b>어원 세 갈래</b>
       <ul>
         <li><b>ethics</b> — 그리스어 ethos에서. <b>성격 · 품성 · 태도</b></li>
@@ -319,44 +525,168 @@ const TOPICS = [
     trap:"윤리는 <b>사실 판단이 아니라 가치 판단</b>이다. 사실 판단은 경험으로 참·거짓을 <b>검증</b>할 수 있지만('지구는 둥글다'), 가치 판단은 <b>당위</b>를 말한다('거짓말하면 안 된다'). 이 구분이 1장 전체의 출발점이자 단골 출제 포인트."
   },
   {
-    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
-    t:"윤리학의 분류 ★",
+    u:U1, t:"윤리학의 분류 ★",
     body:`<b>각 윤리학이 하는 일</b>
       <ul>
         <li><b>이론 윤리학</b> — "무엇이 옳은가"의 <b>기준 자체</b>를 세운다. 공리주의·의무론·덕 윤리가 여기 속한다. 도덕 원리를 <b>정당화</b>하는 것이 목표</li>
         <li><b>실천 윤리학</b> — 그 기준을 <b>현실 문제</b>(생명·성·환경·사회·평화)에 <b>적용</b>해 해결책을 찾는다. 의학·법학·생태학 등 다른 학문의 지식이 필요하므로 <b>학제적</b> 성격</li>
         <li><b>기술 윤리학</b> — 특정 사회의 도덕 현상·관습을 <b>있는 그대로 조사·서술</b>한다. 인류학·사회학처럼 경험적으로 접근하며, 옳고 그름을 <b>판단하지 않는다</b></li>
-        <li><b>메타 윤리학</b> — '선하다', '옳다' 같은 <b>도덕 언어의 의미</b>를 분석하고, 도덕 추론이 <b>논리적으로 타당한지</b>, 나아가 윤리학이 <b>학문으로 성립 가능한지</b>를 따진다. 윤리학을 <b>대상으로 삼는</b> 윤리학</li>
+        <li><b>메타 윤리학</b> — '선하다', '옳다' 같은 <b>도덕 언어의 의미</b>를 분석하고, 도덕 추론이 <b>논리적으로 타당한지</b>, 나아가 윤리학이 <b>학문으로 성립 가능한지</b>를 따진다</li>
       </ul>`,
-    trap:`<span class="tag yes">규범적 성격 있음</span> 이론 · 실천 윤리학 → 둘은 <b>유기적 관계</b>. 이론이 실천에 <b>적용</b>되고, 실천이 다시 이론을 다듬는다<br>
-      <span class="tag no">규범적 성격 없음 ↓</span> 기술 · 메타 윤리학 → 둘 다 <b>객관적·과학적·가치중립적</b>이라 '이래야 한다'를 <b>말하지 않는다</b><br><br>
-      <b>단골 함정</b> — "기술 윤리학은 바람직한 도덕 규범을 제시한다"(✕) / "메타 윤리학은 도덕 문제의 해결책을 모색한다"(✕). 이 둘은 <b>판단하지 않고 기술·분석만</b> 한다.`
+    trap:`<span class="tag yes">규범적 성격 있음</span> 이론 · 실천 윤리학 → 둘은 <b>유기적 관계</b><br>
+      <span class="tag no">규범적 성격 없음 ↓</span> 기술 · 메타 윤리학 → 둘 다 <b>객관적·과학적·가치중립적</b><br><br>
+      <b>단골 함정</b> — "기술 윤리학은 바람직한 도덕 규범을 제시한다"(✕) / "메타 윤리학은 도덕 문제의 해결책을 모색한다"(✕).`
   },
   {
-    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
-    t:"도덕적 탐구",
+    u:U1, t:"도덕적 탐구",
     body:`<b>삼단 논법이 실제로 작동하는 방식</b>
       <ul>
         <li><b>대전제 (도덕 원리)</b> — "생명을 해치는 행위는 옳지 않다" · <b>당위</b> 명제</li>
         <li><b>소전제 (사실 판단)</b> — "안락사는 생명을 해치는 행위다" · <b>사실</b> 명제</li>
-        <li><b>결론 (도덕 판단)</b> — "따라서 안락사는 옳지 않다" · 앞의 둘이 <b>결합</b>해서 도출됨</li>
+        <li><b>결론 (도덕 판단)</b> — "따라서 안락사는 옳지 않다"</li>
       </ul>`,
-    dsec:{ lb:"탐구 과정 5단계", html:`① 윤리적 <b>쟁점·딜레마</b>를 확인한다 → ② 관련 <b>자료</b>를 수집·분석한다 → ③ 자기 <b>입장</b>을 정하고 근거를 든다 → ④ 토론을 거쳐 <b>최선의 대안</b>을 이끌어낸다 → ⑤ 결과를 <b>성찰</b>한다` },
-    trap:"도덕 판단은 <b>도덕 원리 + 사실 판단</b>이 결합해야 나온다. <b>원리만으로도, 사실만으로도 도덕 판단은 나오지 않는다</b>는 것이 핵심. 그래서 도덕적 탐구에는 <b>사실에 대한 정확한 이해</b>도 반드시 필요하다."
+    dsec:{ lb:"탐구 과정 5단계", html:`① 윤리적 <b>쟁점·딜레마</b> 확인 → ② <b>자료</b> 수집·분석 → ③ <b>입장</b> 채택과 근거 제시 → ④ 토론을 통한 <b>최선의 대안</b> 도출 → ⑤ <b>성찰</b>` },
+    trap:"도덕 판단은 <b>도덕 원리 + 사실 판단</b>이 결합해야 나온다. <b>원리만으로도, 사실만으로도 도덕 판단은 나오지 않는다</b>."
   },
   {
-    u:"1장 · 실천 윤리와 윤리 문제에 대한 탐구",
-    t:"도덕적 성찰",
+    u:U1, t:"도덕적 성찰",
     body:`<b>사상가별 성찰의 방법</b>
       <ul>
-        <li><b>소크라테스</b> — <b>"성찰하지 않는 삶은 살 가치가 없다"</b>. 명예나 성공을 좇기보다 자기 삶을 <b>캐묻고 검토</b>하는 것이 먼저. 방법은 <b>산파술</b>(문답을 통해 스스로 무지를 깨닫게 함)</li>
-        <li><b>아리스토텔레스</b> — 성찰은 한 번으로 끝나지 않고 <b>지속적 실천</b>을 통해 <b>습관화</b>되어야 한다. 그 기준이 <b>중용</b>, 곧 <b>지나침도 모자람도 아닌</b> 적절한 상태</li>
-        <li><b>밀</b> — <b>토론</b>을 통해 성찰한다. 자기 생각을 남의 반박에 노출시켜야 비로소 정당화된다. <b>소수 의견도 진리 발견에 기여</b>하므로 억압해선 안 된다</li>
+        <li><b>소크라테스</b> — <b>"성찰하지 않는 삶은 살 가치가 없다"</b>. 명예·성공보다 자기 삶을 <b>캐묻고 검토</b>하는 것이 먼저. 방법은 <b>산파술</b></li>
+        <li><b>아리스토텔레스</b> — <b>지속적 실천</b>을 통한 <b>습관화</b>. 그 기준이 <b>중용</b>(지나침도 모자람도 아닌 적절한 상태)</li>
+        <li><b>밀</b> — <b>토론</b>을 통한 성찰. <b>소수 의견도 진리 발견에 기여</b>하므로 억압해선 안 된다</li>
       </ul>`,
     trap:`<b>★ 용기 = 중용</b><br>
       용기란 <b>두려워할 것을 두려워하고, 두려워하지 않을 것을 두려워하지 않는 것</b>.<br><br>
-      즉 중용으로서의 용기는 <b>'두려움이 아예 없는 상태'가 아니다</b>. 두려움이 전혀 없으면 그것은 용기가 아니라 <b>만용</b>(지나침)이고, 두려워하지 않아도 될 것까지 두려워하면 <b>비겁</b>(모자람)이다.<br><br>
-      중용을 <b>'중간값'이나 '감정이 없는 상태'로 착각</b>하는 것이 대표적 함정. 중용은 산술적 평균이 아니라 <b>상황에 맞는 적절한 정도</b>다.`
+      두려움이 전혀 없으면 <b>만용</b>(지나침), 두려워하지 않아도 될 것까지 두려워하면 <b>비겁</b>(모자람). 중용을 <b>'중간값'이나 '감정이 없는 상태'로 착각</b>하는 것이 대표적 함정.`
+  },
+
+  /* ===== 2장 ===== */
+  {
+    u:U2, t:"유교 — 도 · 성 · 덕",
+    body:`<b>도(道) — 하늘</b>
+      <ul>
+        <li><b>천도 · 천리 · 천명</b> — 하늘이 곧 도덕의 근원. <b>천인합일</b>(하늘과 인간이 하나)</li>
+        <li>정치로는 <b>왕도(덕으로 다스림)</b>를 주장하고 <b>패도(무력 통치)</b>를 배격</li>
+      </ul>
+      <b>성(性) — 본성론</b>
+      <ul>
+        <li><b>맹자 (성선설)</b> — <b>불인인지심</b>(차마 남을 해치지 못하는 마음), <b>양지·양능</b>(배우지 않아도 아는 앎과 능력), <b>사단 → 사덕</b><br>
+          ⇒ 본래 있는 선한 싹을 <b>유지 · 보존 · 확충 · 실천</b>한다</li>
+        <li><b>순자 (성악설)</b> — 본성은 악하니 <b>교화(변화)</b>가 필요. 예(禮)로써 바로잡음</li>
+      </ul>
+      <b>덕(德) — 인(仁)과 예(禮)</b>
+      <ul>
+        <li><b>인(仁)</b> = 인격체의 <b>인간다움</b> · 도덕성 · 사랑. <b>내면적</b> 덕</li>
+        <li><b>예(禮)</b> = <b>외면적</b> 사회규범. <b>비례물시·물청·물언·물동</b>(예가 아니면 보지·듣지·말하지·행하지 말라) → <b>예악</b>(예법과 음악)</li>
+      </ul>`,
+    dsec:{ lb:"인(仁)의 실천 방법", html:`<ul>
+        <li><b>시비선악 분별</b> — 인은 무조건적 사랑이 아니라 <b>옳고 그름을 가린다</b></li>
+        <li><b>존비친소 분별 = 별애(別愛)</b> — 가까운 사람부터 <b>차등적으로</b> 사랑. <b>점진적 확대</b></li>
+        <li><b>효제</b>(부모 형제에 대한 도리) · <b>충서</b>(忠恕)</li>
+        <li><b>추기급인</b>(자기를 미루어 남에게 미침)<br>
+          — <b>기소불욕 물시어인</b>: 내가 원하지 않는 바를 남에게 베풀지 말라 <span style="color:#8A8578;">(서恕 · 소극적)</span><br>
+          — <b>기욕립이립인 기욕달이달인</b>: 내가 서고자 하면 남을 세우고, 내가 통달하고자 하면 남을 통달케 하라 <span style="color:#8A8578;">(충忠 · 적극적)</span></li>
+      </ul>` },
+    trap:`<b>★ 별애(유교) ↔ 겸애(묵가)</b> — 시험 단골 대비.<br>
+      <b>유교의 인</b> = <b>존비친소를 분별</b>하는 <b>차등적</b> 사랑(별애). 가까운 데서 시작해 넓혀감<br>
+      <b>묵가의 겸애</b> = 차별 없이 <b>똑같이</b> 사랑<br><br>
+      "유교는 모든 사람을 <b>똑같이</b> 사랑하라고 했다"(✕) — 이게 함정. 유교는 <b>분별과 차등</b>을 인정한다.`
+  },
+  {
+    u:U2, t:"유교 — 수양 · 지 · 이익 · 통치",
+    body:`<b>수양 (이상적 인간상)</b>
+      <ul>
+        <li><b>극기복례위인</b> — 자기를 이기고 예로 돌아가는 것이 인이다</li>
+        <li><b>수기안인</b> — 자기를 닦아 남을 편안하게 한다</li>
+        <li><b>성(誠)</b>(진실무망) · <b>경(敬)</b>(마음을 한 곳에 집중, 흐트러짐 없음)</li>
+        <li>이상적 인간: <b>성인 · 군자 · 대인 · 대장부</b></li>
+      </ul>
+      <b>지(知) — 앎의 태도</b>
+      <ul>
+        <li><b>학이시습지 불역열호</b> — 배우고 때때로 익히면 또한 기쁘지 아니한가<br>
+          ⇒ 유교는 배움을 <b>쌓아간다(益)</b></li>
+      </ul>
+      <b>이익 — 의(義)와 이(利)</b>
+      <ul>
+        <li><b>도덕적 삶이 목적</b>. 경제적 이익은 그 <b>토대이자 필요조건</b>(부정하지 않음!)</li>
+        <li><b>견리사의</b> — 이익을 보면 의로움을 먼저 생각하라. <b>의(義)가 주(主), 이(利)가 종(從)</b></li>
+        <li><b>항산 · 항심</b>(맹자) — <b>항산(안정된 생업)이 없으면 항심(변치 않는 도덕심)도 없다</b></li>
+      </ul>
+      <b>통치</b>
+      <ul>
+        <li><b>덕치</b>(덕으로 다스림) · <b>정명</b>(이름에 걸맞게 — 임금은 임금답게, 신하는 신하답게)</li>
+        <li>이상 사회: <b>대동사회</b></li>
+      </ul>`,
+    trap:`<b>★ 유교는 경제적 이익을 부정하지 않는다</b> — 이게 함정.<br>
+      "유교는 이익 추구를 <b>전면 부정</b>했다"(✕). 맹자의 <b>항산·항심</b>이 근거 — <b>먹고사는 문제가 해결되어야 도덕도 가능</b>하다고 봤다. 다만 <b>의(義)가 이(利)보다 앞선다</b>는 순서를 지킬 뿐.`
+  },
+  {
+    u:U2, t:"도가 — 도 · 무위자연 · 수양 · 통치",
+    body:`<b>도(道) — 우주 자연의 순리</b>
+      <ul>
+        <li><b>스스로 그러함</b> = <b>무위 · 자연</b></li>
+        <li><b>무명(無名)</b> — 이름 붙일 수 없음. <b>감각을 초월</b>하고 <b>언어와 지식을 초월</b>함</li>
+      </ul>
+      <b>덕 — 인위(人爲)의 부정</b>
+      <ul>
+        <li>유교가 내세우는 <b>인간이 만든 기준과 인위적 노력</b>을 <b>비판</b>한다</li>
+        <li><b>인위 · 작위적인 것 ↓ &nbsp; 무위 ↑</b></li>
+        <li><b>무지</b>(순수하고 소박한 상태) → <b>무욕</b> → <b>무위</b><br>
+          ※ 여기서 무지는 '멍청함'이 아니라 <b>인위적 지식·분별에서 벗어난 소박함</b></li>
+        <li>⇒ <b>겸허 · 겸손 · 부쟁</b>(다투지 않음)</li>
+      </ul>
+      <b>수양</b>
+      <ul>
+        <li><b>좌망</b> — 앉아서 자기를 잊음 / <b>심재</b> — 마음을 비워 깨끗이 함</li>
+        <li>⇒ <b>소요유</b> — 어디에도 매이지 않고 자유롭게 노닒</li>
+        <li>이상: <b>제물</b>(齊物) — <b>만물이 평등</b>하다. 시비·미추·귀천의 구별이 본래 없음</li>
+      </ul>
+      <b>지(知) · 통치</b>
+      <ul>
+        <li><b>위학일익 위도일손</b> — 학문을 하면 날로 <b>더하고(益)</b>, 도를 행하면 날로 <b>던다(損)</b><br>
+          ⇒ 도가는 <b>덜어냄 · 비움 · 버림</b></li>
+        <li><b>무위지치</b> → <b>소국과민</b>(작은 나라, 적은 백성)</li>
+        <li><b>불상현 사민부쟁</b> — 현자를 떠받들지 않아야 백성이 다투지 않는다</li>
+      </ul>`,
+    trap:`<b>★ 유교 ↔ 도가 정면 대비 (최다 출제)</b><br>
+      <span class="tag c">유교</span> 인위적 규범(예)을 <b>긍정</b> · 분별(별애)을 <b>인정</b> · 배움을 <b>쌓는다(益)</b><br>
+      <span class="tag d">도가</span> 인위를 <b>부정</b> · 제물(만물 평등, 분별 없음) · <b>덜어낸다(損)</b><br><br>
+      <b>지(知)의 대비가 핵심</b> — 유교 <b>「학이시습지 불역열호」</b>(쌓음) ↔ 도가 <b>「위학일익 위도일손」</b>(덜어냄). 이 한 쌍만 잡아도 두 사상의 방향이 갈린다.`
+  },
+  {
+    u:U2, t:"불교 — 연기 · 무아 · 사성제",
+    body:`<b>세계관 — 연기(緣起)</b>
+      <ul>
+        <li><b>원인(因) + 조건(緣) = 결과(生起)</b>. 모든 것은 <b>서로 의존</b>해서 생긴다</li>
+        <li>⇒ 홀로 <b>독립적으로 존재하는 것은 없다</b>. <b>고정 · 불변의 실체도 없다</b></li>
+      </ul>
+      <b>인간관</b>
+      <ul>
+        <li><b>오온의 가화합</b> — 인간은 다섯 요소가 <b>임시로 결합</b>한 것<br>
+          ⇒ <b>무아(無我)</b>: 고정된 '나'는 없다 / <b>무상(無常)</b>: 영원한 것은 없다</li>
+        <li><b>불성</b> — 누구나 부처가 될 가능성을 지닌다</li>
+        <li><b>탐욕 · 집착 · 무지</b> → <b>고통</b>(생로병사)</li>
+      </ul>
+      <b>수양 → 이상적 경지</b>
+      <ul>
+        <li><b>팔정도 · 육바라밀 · 중도</b> → <b>깨달음 · 지혜</b></li>
+        <li><b>열반 · 해탈</b> → <b>보살</b>(자신의 깨달음에 머물지 않고 중생을 구제)</li>
+      </ul>
+      <b>생사관</b>
+      <ul>
+        <li>현생의 <b>업(業)</b>이 다음 생을 결정 → <b>윤회</b></li>
+      </ul>`,
+    dsec:{ lb:"반드시 외울 두 묶음", html:`<b>사성제(四聖諦)</b> — <b>고 · 집 · 멸 · 도</b><br>
+      고(苦, 삶은 고통이다) → 집(集, 고통의 원인은 집착) → 멸(滅, 집착을 없앤 상태가 열반) → 도(道, 그 길이 팔정도)<br><br>
+      <b>삼법인(三法印)</b> — <b>제행무상 · 제법무아 · 일체개고</b><br>
+      제행무상(모든 것은 변한다) · 제법무아(고정된 자아는 없다) · 일체개고(그래서 집착하면 괴롭다)` },
+    trap:`<b>★ 무아(無我)를 "내가 없다"로만 외우면 함정에 걸린다.</b><br>
+      무아는 '나라는 게 아예 없다'가 아니라 <b>고정불변의 실체로서의 자아가 없다</b>는 뜻. 오온이 임시로 결합한 것일 뿐.<br><br>
+      <b>세 사상 한 줄 대비</b><br>
+      <span class="tag c">유교</span> 도덕적 규범과 <b>분별</b>을 세운다 (인·예)<br>
+      <span class="tag d">도가</span> 인위를 버리고 <b>자연</b>으로 (무위자연·제물)<br>
+      <span class="tag b">불교</span> 고정된 <b>실체를 부정</b>하고 연기·자비로 (무아·무상)`
   }
 ];
 
@@ -370,49 +700,79 @@ const store = {
     if(a[k]) delete a[k]; else a[k]=1;
     localStorage.setItem(KEY, JSON.stringify(a)); }
 };
+let filter = "all";
 let open = false;
 
-function toggleDetails(){
-  open = !open;
-  $("details").classList.toggle("open", open);
-  $("tg").classList.toggle("open", open);
-  $("tgText").textContent = open ? "접기" : `자세히 보기 · 상세 정리 ${TOPICS.length}개`;
+function units(){
+  const set=[]; TOPICS.forEach(t=>{ if(!set.includes(t.u)) set.push(t.u); }); return set;
 }
+function shortName(u){ return u.split("·")[0].trim(); }
 
 function buildFilters(){
   const box = $("filters");
   box.innerHTML = "";
-  const b = document.createElement("button");
-  b.textContent = "1장 (4)";
-  b.className = "on";
-  box.appendChild(b);
+  ["all", ...units()].forEach(u => {
+    const b = document.createElement("button");
+    const n = (u==="all") ? TOPICS.length : TOPICS.filter(t=>t.u===u).length;
+    b.textContent = (u==="all" ? "전체" : shortName(u)) + ` (${n})`;
+    b.className = (u===filter ? "on" : "");
+    b.onclick = () => { filter = u; render(); };
+    box.appendChild(b);
+  });
+}
+
+function renderMaps(){
+  document.querySelectorAll("#maps .map").forEach(m => {
+    const show = (filter==="all") || (m.dataset.unit===filter);
+    m.classList.toggle("hide", !show);
+  });
 }
 
 function renderDetails(){
   const host = $("details");
   host.innerHTML = "";
-  TOPICS.forEach(tp => {
-    const done = store.is(tp);
-    const card = document.createElement("div");
-    card.className = "topic" + (done ? " done" : "");
-    card.innerHTML = `
-      <div class="thead">
-        <h3>${tp.t}</h3>
-        <div class="chk ${done?"on":""}"><span class="box">✓</span>정리 완료</div>
-      </div>
-      <div class="dbody">${tp.body}</div>
-      ${tp.dsec?`<div class="dsec"><span class="lb">📖 ${tp.dsec.lb}</span>${tp.dsec.html}</div>`:""}
-      ${tp.trap?`<div class="trap"><span class="lb">⚡ 비교 · 함정 포인트</span>${tp.trap}</div>`:""}
-      <input class="memo" placeholder="메모 · 헷갈리는 부분, 기출 포인트…" value="${(memoOf(tp)||"").replace(/"/g,"&quot;")}">
-    `;
-    card.querySelector(".chk").addEventListener("click", () => {
-      store.toggle(tp); renderDetails(); updateProgress();
+  const list = (filter==="all") ? TOPICS : TOPICS.filter(t=>t.u===filter);
+  const byUnit = {};
+  list.forEach(t=>{ if(!byUnit[t.u]) byUnit[t.u]=[]; byUnit[t.u].push(t); });
+
+  Object.keys(byUnit).forEach(u=>{
+    const head = document.createElement("div");
+    head.className = "unit-head";
+    head.innerHTML = `<h3>${u}</h3><span class="cnt">${byUnit[u].length}개 주제</span>`;
+    host.appendChild(head);
+
+    byUnit[u].forEach(tp => {
+      const done = store.is(tp);
+      const card = document.createElement("div");
+      card.className = "topic" + (done ? " done" : "");
+      card.innerHTML = `
+        <div class="thead">
+          <h4>${tp.t}</h4>
+          <div class="chk ${done?"on":""}"><span class="box">✓</span>정리 완료</div>
+        </div>
+        <div class="dbody">${tp.body}</div>
+        ${tp.dsec?`<div class="dsec"><span class="lb">📖 ${tp.dsec.lb}</span>${tp.dsec.html}</div>`:""}
+        ${tp.trap?`<div class="trap"><span class="lb">⚡ 비교 · 함정 포인트</span>${tp.trap}</div>`:""}
+        <input class="memo" placeholder="메모 · 헷갈리는 부분, 기출 포인트…" value="${(memoOf(tp)||"").replace(/"/g,"&quot;")}">
+      `;
+      card.querySelector(".chk").addEventListener("click", () => {
+        store.toggle(tp); renderDetails(); updateProgress();
+      });
+      const memo = card.querySelector(".memo");
+      memo.addEventListener("input", () => setMemo(tp, memo.value));
+      host.appendChild(card);
     });
-    const memo = card.querySelector(".memo");
-    memo.addEventListener("input", () => setMemo(tp, memo.value));
-    host.appendChild(card);
   });
+  $("tgText").textContent = open ? "접기" : `자세히 보기 · 상세 정리 ${list.length}개`;
 }
+
+function toggleDetails(){
+  open = !open;
+  $("details").classList.toggle("open", open);
+  $("tg").classList.toggle("open", open);
+  renderDetails();
+}
+
 function memoOf(tp){
   try{ return (JSON.parse(localStorage.getItem("ethics-memo"))||{})[store.key(tp)] || ""; }catch(e){ return ""; }
 }
@@ -430,10 +790,14 @@ function updateProgress(){
   $("barFill").style.width=pct+"%";
 }
 
-buildFilters();
-renderDetails();
-updateProgress();
-$("tgText").textContent = `자세히 보기 · 상세 정리 ${TOPICS.length}개`;
+function render(){
+  buildFilters();
+  renderMaps();
+  renderDetails();
+  updateProgress();
+}
+
+render();
 </script>
 </body>
 </html>
