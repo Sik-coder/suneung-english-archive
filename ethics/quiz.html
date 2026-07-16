@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생활과 윤리 · 문제 풀기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC; --paper-2:#FFFFFF; --ink:#26382F;
+    --plum:#6B4A7A; --plum-soft:#8d6b9c; --plum-bg:#f3edf6;
+    --teal:#1D9E75; --coral:#C0502A; --amber:#A8690F; --red:#C8402F;
+    --hl:#FCE38A; --hl-line:#F2C94C; --muted:#8A8578;
+    --line:#E4DFD2; --shadow:0 2px 10px rgba(38,56,47,.07);
+    --ok:#2E8B57; --ng:#C8402F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:60px;}
+  a{color:inherit;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  header{background:var(--plum);color:#fff;padding:26px 0 22px;border-bottom:5px solid var(--hl-line);}
+  .back{display:inline-block;font-size:12.5px;color:var(--hl);text-decoration:none;margin-bottom:8px;}
+  .back:hover{opacity:.85;}
+  header h1{font-size:25px;font-weight:900;}
+  header p{font-size:13px;color:#e2d6e8;margin-top:4px;}
+
+  .score-box{background:var(--paper-2);border-radius:14px;box-shadow:var(--shadow);
+    margin:-16px auto 20px;position:relative;z-index:2;padding:16px 20px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .score-box .n{font-size:24px;font-weight:900;color:var(--plum);line-height:1;}
+  .score-box .n small{font-size:14px;color:var(--muted);font-weight:500;}
+  .score-box .l{font-size:11.5px;color:var(--muted);margin-top:3px;}
+  .bar-wrap{flex:1;min-width:150px;}
+  .bar{height:9px;background:var(--line);border-radius:5px;overflow:hidden;}
+  .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-line),var(--plum-soft));transition:width .4s;}
+  .reset{font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;color:var(--muted);
+    background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:6px 13px;transition:.13s;}
+  .reset:hover{border-color:var(--plum-soft);color:var(--plum);}
+
+  .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+  .filters button{font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+    padding:6px 12px;border-radius:18px;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.13s;}
+  .filters button:hover{border-color:var(--plum-soft);}
+  .filters button.on{background:var(--plum);border-color:var(--plum);color:#fff;}
+
+  .q{background:var(--paper-2);border-radius:14px;box-shadow:var(--shadow);
+    padding:20px 22px;margin-bottom:16px;border-top:4px solid var(--plum-soft);}
+  .q .qtop{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+  .q .qnum{font-size:15px;font-weight:900;color:var(--plum);}
+  .badge{font-size:11px;font-weight:900;border-radius:11px;padding:2px 9px;}
+  .badge.made{background:#EEE6F3;color:var(--plum);}
+  .badge.ref{background:#E7F0EC;color:var(--teal);}
+  .badge.unit{background:#f1efe6;color:var(--muted);}
+  .badge.hard{background:#fbe9e5;color:var(--red);}
+
+  .stem{font-size:14.5px;line-height:1.85;margin-bottom:6px;}
+  .passage{background:#f4f6f2;border:1px dashed var(--line);border-radius:10px;
+    padding:12px 15px;margin:10px 0;font-size:14px;line-height:1.85;color:#3c4a43;}
+  .passage .who{font-weight:900;color:var(--plum);}
+  .ask{font-size:14.5px;font-weight:700;margin:10px 0 12px;}
+
+  .opts{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .opt{display:flex;gap:9px;align-items:flex-start;padding:10px 13px;border:1.5px solid var(--line);
+    border-radius:9px;cursor:pointer;font-size:14px;line-height:1.6;background:#fff;transition:.12s;user-select:none;}
+  .opt:hover{border-color:var(--plum-soft);background:#fbf9f5;}
+  .opt .cir{flex-shrink:0;width:21px;height:21px;border-radius:50%;border:1.6px solid var(--muted);
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--muted);}
+  .opt.picked{border-color:var(--plum);background:var(--plum-bg);}
+  .opt.picked .cir{background:var(--plum);border-color:var(--plum);color:#fff;}
+  .opt.correct{border-color:var(--ok);background:#eaf5ee;}
+  .opt.correct .cir{background:var(--ok);border-color:var(--ok);color:#fff;}
+  .opt.wrong{border-color:var(--ng);background:#fbece9;}
+  .opt.wrong .cir{background:var(--ng);border-color:var(--ng);color:#fff;}
+  .opt.locked{cursor:default;}
+  .opt.locked:hover{background:inherit;}
+
+  .exp{margin-top:12px;background:#fffdf6;border:1px dashed var(--hl-line);border-radius:10px;
+    padding:13px 16px;font-size:13.5px;line-height:1.8;display:none;}
+  .exp.show{display:block;}
+  .exp .r{font-weight:900;color:var(--ok);font-size:13px;display:block;margin-bottom:5px;}
+  .exp .r.no{color:var(--ng);}
+  .exp b{color:var(--plum);}
+  .exp .each{margin-top:7px;padding-top:7px;border-top:1px solid var(--line);}
+  .exp .each .li{margin-bottom:3px;}
+  .exp .refnote{margin-top:8px;font-size:12px;color:var(--muted);background:#f4f2ea;
+    border-radius:7px;padding:7px 11px;}
+
+  footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);line-height:1.7;}
+  footer b{color:var(--ink);}
+
+  @media(max-width:600px){header h1{font-size:21px;}.q{padding:17px 16px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← 개념 정리로</a>
+    <h1>생활과 윤리 · 문제 풀기</h1>
+    <p>평가원 스타일 문항 · 선지 클릭 → 즉시 채점 · 해설</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="score-box">
+    <div><span class="n" id="scoreN">0<small>/0</small></span><div class="l">맞힌 문제</div></div>
+    <div class="bar-wrap">
+      <div class="l" style="display:flex;justify-content:space-between;"><span>정답률</span><span id="pctN">–</span></div>
+      <div class="bar"><span id="barFill"></span></div>
+    </div>
+    <button class="reset" onclick="resetAll()">기록 초기화</button>
+  </div>
+
+  <div class="filters" id="filters"></div>
+  <div id="quiz"></div>
+
+  <footer>
+    <b>출처 표시</b> — <span class="badge made" style="font-size:10px;">자작</span> 는 개념 정리를 바탕으로 평가원 스타일로 새로 만든 문항이고,
+    <span class="badge ref" style="font-size:10px;">기출참고</span> 는 실제 평가원 기출의 출제 포인트를 반영해 변형한 문항입니다.
+    기출 원문을 그대로 옮기지 않고 새로 작성했으며, 해당 연도의 출제 경향을 해설에 적어 두었습니다.<br>
+    점수·기록은 이 브라우저에 자동 저장됩니다.
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   문항 데이터
+   src  : "made"(자작) | "ref"(기출참고)
+   unit : "1장" | "2장" | "3장"
+   hard : true면 고난도 배지
+   stem : 발문 앞 설명(선택) / passage: 제시문(선택, {who, text} 배열)
+   ask  : 질문
+   opts : 선지 5개
+   ans  : 정답 인덱스(0~4)
+   exp  : { total: 전체 해설, each: [선지별 한 줄]{옵션 수만큼}, ref: 기출 출처 메모(선택) }
+   ===================================================================== */
+const QUESTIONS = [
+  /* ---------- 1장 ---------- */
+  {
+    src:"ref", unit:"1장",
+    ask:"다음 설명에 해당하는 윤리학의 분야로 가장 적절한 것은?",
+    passage:[{who:"", text:"도덕적 관습이나 풍습을 <b>있는 그대로 조사·기술</b>하며, 도덕 현상을 <b>경험적·가치중립적</b>으로 다루는 것을 목표로 한다."}],
+    opts:[
+      "이론 규범 윤리학",
+      "실천 규범 윤리학",
+      "기술 윤리학",
+      "메타 윤리학",
+      "응용 윤리학"
+    ],
+    ans:2,
+    exp:{
+      total:"핵심어는 <b>있는 그대로 조사·기술</b>, <b>경험적·가치중립적</b>이다. 도덕 현상을 관찰·서술만 하고 옳고 그름을 판단하지 않는 것은 <b>기술 윤리학</b>이다.",
+      each:[
+        "① 이론 규범 윤리학 — 도덕 원리·기준을 <b>정당화</b>. 가치중립적이 아니라 규범을 제시한다.",
+        "② 실천 규범 윤리학 — 원리를 현실 문제에 <b>적용</b>. 역시 규범적이다.",
+        "③ 기술 윤리학 — <b>정답</b>. 경험적·가치중립적으로 도덕 현상을 기술.",
+        "④ 메타 윤리학 — 도덕 <b>언어의 의미·논리</b>를 분석. 기술과는 다르다.",
+        "⑤ 응용 윤리학 — 실천 윤리학의 다른 이름. 구체적 문제 해결이 목적."
+      ],
+      ref:"윤리학의 분류는 매년 1번으로 출제되는 최빈출 주제. '가치중립적·기술'이 나오면 기술 윤리학, '언어·의미 분석'이 나오면 메타 윤리학으로 갈린다."
+    }
+  },
+  {
+    src:"made", unit:"1장",
+    ask:"윤리학의 분류에 대한 설명으로 옳지 <u>않은</u> 것은?",
+    opts:[
+      "이론 윤리학과 실천 윤리학은 모두 규범적 성격을 지닌다.",
+      "실천 윤리학은 인접 학문의 지식을 활용하는 학제적 성격을 지닌다.",
+      "메타 윤리학은 도덕적 딜레마의 구체적 해결책을 제시하는 것을 목표로 한다.",
+      "기술 윤리학은 도덕 현상을 객관적으로 기술하고자 한다.",
+      "이론 윤리학은 도덕 판단의 근거가 되는 원리를 정당화한다."
+    ],
+    ans:2,
+    exp:{
+      total:"<b>메타 윤리학</b>은 도덕 <b>언어의 의미</b>와 도덕 추론의 <b>논리적 타당성</b>을 분석할 뿐, 구체적 해결책을 제시하지 않는다. 해결책 제시는 <b>실천 윤리학</b>의 몫이다. 따라서 ③이 틀렸다.",
+      each:[
+        "① 옳음 — 이론·실천 윤리학은 둘 다 규범적 성격이 있다.",
+        "② 옳음 — 실천 윤리학의 핵심 특징이 학제적 성격이다.",
+        "③ <b>틀림(정답)</b> — 구체적 해결책 제시는 실천 윤리학. 메타 윤리학은 분석만 한다.",
+        "④ 옳음 — 기술 윤리학은 객관적·경험적 기술이 목표.",
+        "⑤ 옳음 — 이론 윤리학은 도덕 원리를 정당화한다."
+      ]
+    }
+  },
+  {
+    src:"made", unit:"1장", hard:true,
+    ask:"다음 사상가들이 공통으로 강조하는 것으로 가장 적절한 것은?",
+    passage:[
+      {who:"소크라테스", text:"성찰하지 않는 삶은 살 가치가 없다."},
+      {who:"아리스토텔레스", text:"용기는 두려워할 것을 두려워하고, 두려워하지 않을 것을 두려워하지 않는 것이다."}
+    ],
+    opts:[
+      "감정을 완전히 제거한 이성적 판단",
+      "도덕적 앎을 넘어선 지속적인 성찰과 실천",
+      "다수의 동의를 통한 규범의 정당화",
+      "자연법칙에 대한 과학적 탐구",
+      "쾌락의 양을 계산하는 능력"
+    ],
+    ans:1,
+    exp:{
+      total:"소크라테스는 <b>성찰</b>을, 아리스토텔레스는 <b>중용의 실천</b>을 강조한다. 두 사람 모두 도덕을 <b>아는 데 그치지 않고 지속적으로 성찰·실천</b>할 것을 말한다. 아리스토텔레스의 용기는 감정을 없애는 것이 아니라 <b>적절히 조절</b>하는 것임에 유의.",
+      each:[
+        "① 감정 제거 — 아리스토텔레스의 중용은 감정을 <b>없애는</b> 것이 아니라 적절한 정도로 조절하는 것.",
+        "② <b>정답</b> — 성찰과 실천의 강조가 두 사상가의 공통점.",
+        "③ 다수의 동의 — 두 사람의 논지가 아니다.",
+        "④ 과학적 탐구 — 도덕적 성찰과 무관.",
+        "⑤ 쾌락 계산 — 벤담의 공리주의. 전혀 다른 주제."
+      ]
+    }
+  },
+
+  /* ---------- 2장 ---------- */
+  {
+    src:"ref", unit:"2장", hard:true,
+    ask:"갑, 을의 입장에 대한 옳은 설명만을 고른 것은?",
+    passage:[
+      {who:"갑", text:"어버이를 사랑하는 마음을 미루어 남에게 넓혀 가야 한다. 사랑에는 <b>가까운 이와 먼 이의 구별</b>이 있다."},
+      {who:"을", text:"남의 어버이를 내 어버이처럼 사랑하라. 세상 모든 사람을 <b>차별 없이 똑같이</b> 사랑해야 한다."}
+    ],
+    opts:[
+      "갑은 존비친소를 구별하는 분별적 사랑을 주장한다.",
+      "을은 유교의 인(仁)을 계승하여 별애를 강조한다.",
+      "갑은 을과 달리 사랑의 점진적 확대를 부정한다.",
+      "을은 갑과 달리 가족애를 사회로 확대하는 것에 반대한다.",
+      "갑과 을은 모두 사랑에 차등을 두어야 한다고 본다."
+    ],
+    ans:0,
+    exp:{
+      total:"갑은 <b>유교(공자·맹자)</b>의 <b>별애</b>(존비친소를 구별하는 차등적 사랑), 을은 <b>묵가</b>의 <b>겸애</b>(차별 없는 사랑)다. 갑만 사랑에 차등을 둔다.",
+      each:[
+        "① <b>정답</b> — 갑(유교)은 존비친소를 구별하는 별애를 주장한다.",
+        "② 틀림 — 을은 묵가. 유교의 인을 계승한 것이 아니라 오히려 대립한다.",
+        "③ 틀림 — 유교(갑)는 사랑의 <b>점진적 확대</b>를 강조한다(가족→사회).",
+        "④ 틀림 — 가족애를 사회로 확대하는 것은 오히려 갑(유교)의 입장.",
+        "⑤ 틀림 — 차등을 두는 것은 갑뿐. 을(겸애)은 차별 없는 사랑."
+      ],
+      ref:"유교의 별애 ↔ 묵가의 겸애 대비는 동양 윤리 단골 문항. '차별 없이'가 나오면 묵가, '구별·차등'이 나오면 유교."
+    }
+  },
+  {
+    src:"made", unit:"2장",
+    ask:"다음 입장을 가진 동양 사상으로 가장 적절한 것은?",
+    passage:[{who:"", text:"배움을 더하려 하지 말고 오히려 <b>덜어내라</b>. 인위적인 지식과 규범을 버리고 <b>스스로 그러한</b> 자연의 순리에 따라야 한다. 억지로 하지 않음(無爲)이 곧 도(道)이다."}],
+    opts:[
+      "예(禮)를 통해 사회 질서를 세워야 한다.",
+      "무위자연에 따라 인위적 규범을 버려야 한다.",
+      "연기를 깨달아 자비를 실천해야 한다.",
+      "사단을 확충하여 사덕을 이루어야 한다.",
+      "차별 없는 사랑으로 천하를 이롭게 해야 한다."
+    ],
+    ans:1,
+    exp:{
+      total:"<b>덜어냄(損)</b>, <b>스스로 그러함</b>, <b>무위</b>는 모두 <b>도가</b>의 핵심어다. 도가는 인위적 규범(예)을 버리고 자연의 순리에 따를 것을 강조한다.",
+      each:[
+        "① 예를 통한 질서 — <b>유교</b>의 입장.",
+        "② <b>정답</b> — 무위자연·인위 배격은 도가.",
+        "③ 연기·자비 — <b>불교</b>의 입장.",
+        "④ 사단·사덕 — <b>유교(맹자)</b>의 입장.",
+        "⑤ 차별 없는 사랑 — <b>묵가</b>의 겸애."
+      ]
+    }
+  },
+  {
+    src:"made", unit:"2장", hard:true,
+    ask:"불교의 입장으로 옳지 <u>않은</u> 것은?",
+    opts:[
+      "모든 존재는 원인과 조건에 따라 생겨나고 사라진다.",
+      "고정불변의 실체로서의 자아는 존재하지 않는다.",
+      "인간은 누구나 부처가 될 수 있는 가능성을 지닌다.",
+      "만물은 서로 독립하여 그 자체로 존재한다.",
+      "탐욕과 집착에서 벗어나 열반에 이르러야 한다."
+    ],
+    ans:3,
+    exp:{
+      total:"불교의 <b>연기설</b>에 따르면 모든 것은 <b>서로 의존</b>해서 생겨나므로, 홀로 <b>독립하여 존재하는 것은 없다</b>. ④는 연기설과 정면으로 배치되므로 틀렸다.",
+      each:[
+        "① 옳음 — 연기(緣起)의 핵심.",
+        "② 옳음 — 무아(無我). 고정된 자아 부정.",
+        "③ 옳음 — 불성. 누구나 부처가 될 씨앗을 지님.",
+        "④ <b>틀림(정답)</b> — 연기설은 '독립적 존재'를 부정한다. 만물은 상호 의존한다.",
+        "⑤ 옳음 — 탐욕·집착을 끊고 열반에 이르는 것이 목표."
+      ]
+    }
+  },
+
+  /* ---------- 3장 ---------- */
+  {
+    src:"ref", unit:"3장", hard:true,
+    ask:"갑, 을 사상가에 대한 설명으로 옳은 것은?",
+    passage:[
+      {who:"갑", text:"행위의 옳고 그름은 그 <b>결과가 가져오는 유용성</b>에 달려 있다. 최대 다수의 최대 행복을 낳는 행위가 옳다."},
+      {who:"을", text:"오직 <b>의무 의식(선의지)</b>에서 비롯된 행위만이 도덕적 가치를 지닌다. 결과가 아무리 좋아도 경향성에서 나온 행위는 도덕적이지 않다."}
+    ],
+    opts:[
+      "갑은 행위의 동기를 도덕 판단의 유일한 기준으로 본다.",
+      "을은 인간을 목적이 아닌 수단으로 대할 것을 강조한다.",
+      "갑은 을과 달리 행위의 결과를 중시한다.",
+      "을은 갑과 달리 쾌락의 증진을 도덕의 목적으로 삼는다.",
+      "갑과 을은 모두 보편적 도덕 원리의 존재를 부정한다."
+    ],
+    ans:2,
+    exp:{
+      total:"갑은 <b>공리주의</b>(결과·유용성), 을은 <b>칸트(의무론)</b>(동기·의무)다. 결과를 중시하는 것은 갑, 동기를 중시하는 것은 을이다.",
+      each:[
+        "① 틀림 — 동기를 기준으로 삼는 것은 을(칸트). 갑은 결과주의.",
+        "② 틀림 — 칸트는 인간을 <b>목적</b>으로 대하라고 했다(수단 ✕).",
+        "③ <b>정답</b> — 갑(공리주의)은 결과를, 을(칸트)은 동기를 중시.",
+        "④ 틀림 — 쾌락 증진은 갑(공리주의)의 입장.",
+        "⑤ 틀림 — 둘 다 보편적 도덕 원리를 <b>인정</b>한다(방식만 다름)."
+      ],
+      ref:"칸트 ↔ 공리주의 비교는 서양 윤리 최빈출. '동기·의무·선의지'는 칸트, '결과·유용성·최대 행복'은 공리주의로 즉시 구분."
+    }
+  },
+  {
+    src:"made", unit:"3장",
+    ask:"칸트의 의무론에 대한 설명으로 가장 적절한 것은?",
+    opts:[
+      "행복을 증진하는 결과를 도덕의 최고 목적으로 삼는다.",
+      "동정심과 같은 경향성에서 나온 행위에 도덕적 가치를 부여한다.",
+      "도덕 법칙은 '~하려면 ~하라'는 조건적 명령의 형식을 띤다.",
+      "인간을 언제나 목적으로 대하고 한낱 수단으로 삼지 말아야 한다.",
+      "도덕 판단의 기준을 구체적 상황과 공동체의 전통에서 찾는다."
+    ],
+    ans:3,
+    exp:{
+      total:"칸트의 <b>인격주의 정식</b> — 인간을 <b>목적</b>으로 대하고 단순한 수단으로 삼지 말라. 이것이 정답 ④이다.",
+      each:[
+        "① 틀림 — 결과·행복 중시는 공리주의. 칸트는 동기를 본다.",
+        "② 틀림 — 칸트는 경향성에서 나온 행위에 도덕적 가치를 <b>부여하지 않는다</b>.",
+        "③ 틀림 — 조건적 명령(가언명령)이 아니라 <b>무조건적 명령(정언명령)</b>.",
+        "④ <b>정답</b> — 인격주의 정식.",
+        "⑤ 틀림 — 상황·공동체 전통 중시는 <b>덕윤리</b>."
+      ]
+    }
+  },
+  {
+    src:"made", unit:"3장",
+    ask:"벤담과 밀의 공리주의에 대한 설명으로 옳지 <u>않은</u> 것은?",
+    opts:[
+      "벤담은 쾌락에 질적 차이가 없다고 보아 쾌락을 계산할 수 있다고 하였다.",
+      "밀은 쾌락에 질적인 차이가 있음을 인정하였다.",
+      "두 사람 모두 쾌락과 고통을 느끼는 능력을 도덕적 고려의 기준으로 삼았다.",
+      "두 사람 모두 최대 다수의 최대 행복을 도덕 원리로 삼았다.",
+      "벤담은 정신적 쾌락이 육체적 쾌락보다 질적으로 우월하다고 보았다."
+    ],
+    ans:4,
+    exp:{
+      total:"정신적 쾌락이 질적으로 우월하다고 본 것은 <b>밀</b>(질적 공리주의)이다. <b>벤담</b>은 쾌락의 질적 차이를 인정하지 않았으므로 ⑤가 틀렸다.",
+      each:[
+        "① 옳음 — 벤담 = 양적 공리주의, 쾌락 계산.",
+        "② 옳음 — 밀 = 질적 공리주의.",
+        "③ 옳음 — 공리주의는 감수 능력을 기준으로 삼는다.",
+        "④ 옳음 — 최대 다수의 최대 행복은 두 사람의 공통 원리.",
+        "⑤ <b>틀림(정답)</b> — 질적 우월을 말한 것은 밀. 벤담이 아니다."
+      ]
+    }
+  },
+  {
+    src:"made", unit:"3장", hard:true,
+    ask:"다음 사상가가 공리주의에 대해 제기할 비판으로 가장 적절한 것은?",
+    passage:[{who:"롤스", text:"각 개인은 사회 전체의 복지를 위해서도 침해될 수 없는 <b>정의에 입각한 불가침의 권리</b>를 지닌다. 다수가 누릴 이익이 크다는 이유로 소수에게 희생을 강요하는 것은 정의롭지 못하다."}],
+    opts:[
+      "행위의 결과보다 동기를 우선해야 함을 간과하고 있다.",
+      "최대 다수의 최대 행복을 위해 소수의 권리를 침해할 수 있다.",
+      "쾌락의 질적 차이를 인정하지 않는 오류를 범하고 있다.",
+      "도덕 판단에서 공동체의 전통을 지나치게 강조하고 있다.",
+      "인간 이외의 동물을 도덕적 고려에서 배제하고 있다."
+    ],
+    ans:1,
+    exp:{
+      total:"롤스는 <b>개인의 불가침 권리</b>를 강조하며, 공리주의가 <b>다수의 행복을 위해 소수를 희생</b>시킬 수 있다는 점을 비판한다. 따라서 ②가 정답.",
+      each:[
+        "① 동기 우선 — 칸트의 관점이지 롤스가 제시문에서 말한 비판이 아니다.",
+        "② <b>정답</b> — 소수의 권리 침해 문제가 롤스 비판의 핵심.",
+        "③ 쾌락의 질 — 밀이 벤담에게 한 비판. 롤스와 무관.",
+        "④ 공동체 전통 — 공동체주의·덕윤리의 관점.",
+        "⑤ 동물 배제 — 오히려 공리주의는 동물의 고통을 고려한다. 롤스의 비판점이 아니다."
+      ],
+      ref:"롤스의 공리주의 비판(소수 희생·개인의 권리)은 사회정의 단원과 연결되는 빈출 포인트."
+    }
+  }
+];
+
+const $ = id => document.getElementById(id);
+const KEY = "ethics-quiz";
+const store = {
+  all(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } },
+  get(i){ return this.all()[i]; },      // 저장: 고른 인덱스 or undefined
+  set(i,v){ const a=this.all(); a[i]=v; localStorage.setItem(KEY, JSON.stringify(a)); },
+  clear(){ localStorage.removeItem(KEY); }
+};
+let filter = "all";
+const CIRC = ["①","②","③","④","⑤"];
+
+function units(){ return ["1장","2장","3장"]; }
+
+function buildFilters(){
+  const box = $("filters"); box.innerHTML="";
+  const defs = [["all","전체"],["1장","1장"],["2장","2장"],["3장","3장"]];
+  defs.forEach(([v,label])=>{
+    const b=document.createElement("button");
+    const n = v==="all" ? QUESTIONS.length : QUESTIONS.filter(q=>q.unit===v).length;
+    b.textContent = `${label} (${n})`;
+    b.className = (v===filter?"on":"");
+    b.onclick=()=>{ filter=v; render(); };
+    box.appendChild(b);
+  });
+}
+
+function render(){
+  buildFilters();
+  const host=$("quiz"); host.innerHTML="";
+  QUESTIONS.forEach((q,i)=>{
+    if(filter!=="all" && q.unit!==filter) return;
+    const picked = store.get(i);
+    const answered = (picked!==undefined && picked!==null);
+    const card=document.createElement("div");
+    card.className="q";
+
+    const badges = `
+      <span class="badge ${q.src==='made'?'made':'ref'}">${q.src==='made'?'자작':'기출참고'}</span>
+      <span class="badge unit">${q.unit}</span>
+      ${q.hard?'<span class="badge hard">고난도</span>':''}`;
+    const passage = (q.passage||[]).map(p=>
+      `<div class="passage">${p.who?`<span class="who">${p.who}</span> : `:""}${p.text}</div>`).join("");
+
+    const opts = q.opts.map((o,oi)=>{
+      let cls="opt";
+      if(answered){
+        cls+=" locked";
+        if(oi===q.ans) cls+=" correct";
+        else if(oi===picked) cls+=" wrong";
+      }
+      return `<li class="${cls}" data-q="${i}" data-o="${oi}">
+        <span class="cir">${CIRC[oi]}</span><span>${o}</span></li>`;
+    }).join("");
+
+    let exp="";
+    if(answered){
+      const correct = picked===q.ans;
+      const each = (q.exp.each||[]).map(e=>`<div class="li">${e}</div>`).join("");
+      exp = `<div class="exp show">
+        <span class="r ${correct?'':'no'}">${correct?'✓ 정답입니다':'✗ 틀렸습니다'} — 정답 ${CIRC[q.ans]}</span>
+        ${q.exp.total}
+        <div class="each">${each}</div>
+        ${q.exp.ref?`<div class="refnote">📌 ${q.exp.ref}</div>`:""}
+      </div>`;
+    }
+
+    card.innerHTML = `
+      <div class="qtop"><span class="qnum">Q${i+1}</span>${badges}</div>
+      ${q.stem?`<div class="stem">${q.stem}</div>`:""}
+      ${passage}
+      <div class="ask">${q.ask}</div>
+      <ul class="opts">${opts}</ul>
+      ${exp}`;
+    host.appendChild(card);
+  });
+
+  host.querySelectorAll(".opt:not(.locked)").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      const qi=+el.dataset.q, oi=+el.dataset.o;
+      store.set(qi, oi);
+      render(); updateScore();
+      // 방금 푼 문제로 스크롤 유지
+      const card=[...document.querySelectorAll(".q")].find(c=>c.querySelector(`[data-q="${qi}"]`));
+      if(card) card.scrollIntoView({block:"nearest"});
+    });
+  });
+  updateScore();
+}
+
+function updateScore(){
+  const a=store.all();
+  let answered=0, correct=0;
+  QUESTIONS.forEach((q,i)=>{
+    if(a[i]!==undefined && a[i]!==null){ answered++; if(a[i]===q.ans) correct++; }
+  });
+  $("scoreN").innerHTML = correct + `<small>/${answered||0}</small>`;
+  const pct = answered ? Math.round(correct/answered*100) : 0;
+  $("pctN").textContent = answered ? pct+"%" : "–";
+  $("barFill").style.width = pct+"%";
+}
+
+function resetAll(){
+  if(confirm("모든 풀이 기록을 지울까요?")){ store.clear(); render(); }
+}
+
+render();
+</script>
+</body>
+</html>
