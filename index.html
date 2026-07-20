@@ -55,6 +55,26 @@
     header h1{font-size:26px;}
   }
   @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+  .sync-wrap{margin:26px 0 6px;}
+  .sync-open{width:100%;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;
+    background:#fff;color:#2E5D4B;border:1.5px solid #E4DFD2;border-radius:12px;padding:13px;transition:.13s;}
+  .sync-open:hover{border-color:#5c8676;}
+  .sync-panel{display:none;background:#fff;border:1.5px solid #E4DFD2;border-radius:14px;
+    padding:20px 22px;margin-top:10px;}
+  .sync-desc{font-size:13px;color:#8A8578;line-height:1.75;margin-bottom:16px;}
+  .sync-desc b{color:#26382F;}
+  .sync-block{margin-bottom:16px;}
+  .sync-block label{display:block;font-size:13px;font-weight:700;color:#26382F;margin-bottom:6px;}
+  .sync-block label span{font-weight:500;color:#8A8578;font-size:12px;}
+  .sync-panel textarea{width:100%;height:74px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;
+    line-height:1.5;color:#4a5a52;background:#f7f9f7;border:1.5px solid #E4DFD2;border-radius:9px;
+    padding:9px 11px;resize:vertical;word-break:break-all;box-sizing:border-box;}
+  .sync-panel textarea:focus{outline:none;border-color:#5c8676;}
+  .sync-btn{margin-top:8px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
+    background:#fff;color:#2E5D4B;border:1.5px solid #5c8676;border-radius:18px;padding:8px 16px;transition:.13s;}
+  .sync-btn:hover{background:#5c8676;color:#fff;}
+  .sync-btn.primary{background:#2E5D4B;color:#fff;border-color:#2E5D4B;}
+  .sync-msg{font-size:13px;font-weight:700;color:#2E5D4B;min-height:20px;}
 </style>
 </head>
 <body>
@@ -103,10 +123,119 @@
     <b>생윤 — 남는 시간 전부</b> · 개념 강의 완강 후 기출. 목표: 8월 중순까지 50점 만점에 37~40점대
   </div>
 
+  <div class="sync-wrap">
+    <button class="sync-open" onclick="toggleSync()">🔗 진도 옮기기 (폰 ↔ 컴퓨터)</button>
+    <div class="sync-panel" id="syncPanel">
+      <p class="sync-desc">
+        <b>단어장 · 영어 회차 체크 · 생윤 개념 · 생윤 메모 · 문제 풀이 기록</b>을 한 번에 옮깁니다.<br>
+        한쪽에서 <b>내 코드를 복사</b>해서, 다른 쪽 <b>아래 칸에 붙여넣고 불러오기</b>를 누르세요.
+      </p>
+
+      <div class="sync-block">
+        <label>① 내 진도 코드 <span id="myInfo"></span></label>
+        <textarea id="myCode" readonly onclick="this.select()"></textarea>
+        <button class="sync-btn" onclick="copyMyCode()">📋 복사하기</button>
+      </div>
+
+      <div class="sync-block">
+        <label>② 다른 기기 코드 붙여넣기</label>
+        <textarea id="inCode" placeholder="여기에 코드를 붙여넣으세요"></textarea>
+        <button class="sync-btn primary" onclick="applyCode()">📥 불러오기</button>
+      </div>
+
+      <div class="sync-msg" id="syncMsg"></div>
+    </div>
+  </div>
+
   <footer>
     진도·메모는 각 페이지에서 브라우저에 자동 저장됩니다.
   </footer>
 </div>
+
+<script>
+/* ===== 사이트 전체 진도 동기화 ===== */
+const SYNC_KEYS = ["vocab-known","ethics-done","ethics-memo","ethics-quiz"];
+const SYNC_PREFIX = ["eng-"];
+
+function collectAll(){
+  const out = {};
+  SYNC_KEYS.forEach(k=>{ const v=localStorage.getItem(k); if(v) out[k]=v; });
+  for(let i=0;i<localStorage.length;i++){
+    const k = localStorage.key(i);
+    if(SYNC_PREFIX.some(p=>k.startsWith(p))) out[k] = localStorage.getItem(k);
+  }
+  return out;
+}
+
+function countItems(obj){
+  let n = 0;
+  Object.entries(obj).forEach(([k,v])=>{
+    try{ const p=JSON.parse(v); n += (p && typeof p==="object") ? Object.keys(p).length : 1; }
+    catch(e){ n += 1; }
+  });
+  return n;
+}
+
+function toggleSync(){
+  const p = document.getElementById("syncPanel");
+  const open = p.style.display !== "block";
+  p.style.display = open ? "block" : "none";
+  if(open) fillMyCode();
+}
+
+function fillMyCode(){
+  const data = collectAll();
+  const ta = document.getElementById("myCode");
+  const keys = Object.keys(data);
+  if(keys.length===0){
+    ta.value=""; ta.placeholder="아직 저장된 진도가 없어요.";
+    document.getElementById("myInfo").textContent="기록 0개"; return;
+  }
+  ta.value = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  document.getElementById("myInfo").textContent = `기록 ${countItems(data)}개`;
+}
+
+function copyMyCode(){
+  const ta = document.getElementById("myCode");
+  const msg = document.getElementById("syncMsg");
+  if(!ta.value){ msg.textContent="복사할 진도가 없어요."; return; }
+  ta.select(); ta.setSelectionRange(0,999999);
+  let ok=false;
+  try{ ok=document.execCommand("copy"); }catch(e){}
+  if(ok){ msg.textContent="✓ 복사했어요. 다른 기기에 붙여넣으세요."; }
+  else if(navigator.clipboard){
+    navigator.clipboard.writeText(ta.value)
+      .then(()=>msg.textContent="✓ 복사했어요. 다른 기기에 붙여넣으세요.")
+      .catch(()=>msg.textContent="위 칸을 길게 눌러 직접 복사해 주세요.");
+  } else { msg.textContent="위 칸을 길게 눌러 직접 복사해 주세요."; }
+}
+
+function applyCode(){
+  const msg = document.getElementById("syncMsg");
+  const code = document.getElementById("inCode").value.trim();
+  if(!code){ msg.textContent="코드를 붙여넣어 주세요."; return; }
+  try{
+    const incoming = JSON.parse(decodeURIComponent(escape(atob(code))));
+    let added = 0;
+    Object.entries(incoming).forEach(([k,v])=>{
+      const mine = localStorage.getItem(k);
+      if(!mine){ localStorage.setItem(k,v); try{ added += Object.keys(JSON.parse(v)).length; }catch(e){ added++; } return; }
+      try{
+        const a=JSON.parse(mine), b=JSON.parse(v);
+        if(a&&b&&typeof a==="object"&&typeof b==="object"){
+          Object.entries(b).forEach(([kk,vv])=>{ if(!(kk in a)){ a[kk]=vv; added++; } });
+          localStorage.setItem(k, JSON.stringify(a));
+        }
+      }catch(e){ /* 문자열 값은 기존 것 유지 */ }
+    });
+    document.getElementById("inCode").value="";
+    fillMyCode();
+    msg.textContent = `✓ 불러왔어요. 새로 ${added}개 추가되었습니다.`;
+  }catch(e){
+    msg.textContent = "✗ 코드를 읽을 수 없어요. 전체를 다시 붙여넣어 주세요.";
+  }
+}
+</script>
 
 </body>
 </html>
