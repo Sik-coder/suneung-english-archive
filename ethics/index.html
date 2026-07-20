@@ -116,6 +116,25 @@
   .cmp th.dao{background:#E1F5EE;color:#085041;border:1.5px solid #1D9E75;}
   .cmp td{vertical-align:top;padding:0;}
   .cmp td.rowk{width:74px;padding-right:8px;}
+
+  /* 4장 — 찬반 대조표 */
+  .pc{display:flex;gap:10px;align-items:stretch;margin-top:8px;}
+  .pc > div{flex:1;min-width:0;border-radius:11px;padding:10px 13px;}
+  .pc .yes{background:#E1F5EE;border:1.5px solid #1D9E75;}
+  .pc .no{background:#FAECE7;border:1.5px solid #D85A30;}
+  .pc .h{font-size:13px;font-weight:900;margin-bottom:5px;}
+  .pc .yes .h{color:#085041;} .pc .no .h{color:#712B13;}
+  .pc ul{margin:0;padding-left:16px;font-size:12.5px;line-height:1.65;}
+  .pc .yes ul{color:#0F6E56;} .pc .no ul{color:#993C1D;}
+  .pc li{margin-bottom:2px;}
+  .pc li b{color:var(--ink);}
+  .qbox{background:#FFF8E8;border:1.5px solid #EF9F27;border-radius:10px;
+    padding:10px 14px;margin-bottom:16px;font-size:13px;color:#6B4405;line-height:1.6;}
+  .qbox b{color:#4A2E02;}
+  .flow{background:#fff;border:1.5px dashed #D3D1C7;border-radius:9px;
+    padding:9px 13px;font-size:12.5px;line-height:1.9;color:#5F5E5A;margin-top:7px;}
+  .flow b{color:var(--ink);}
+  .kw{background:#FCE38A;border-radius:3px;padding:0 3px;font-weight:700;color:#4A3B00;}
   .rk{display:flex;align-items:center;justify-content:center;height:100%;min-height:46px;
     background:#26382F;color:#fff;border-radius:8px;font-size:13px;font-weight:900;padding:6px 4px;
     text-align:center;line-height:1.3;}
@@ -651,6 +670,366 @@
       </div>
     </div>
 
+    <!-- ================= 4장 ================= -->
+    <div class="map" data-unit="4장 · 생명과 윤리 (생사관 · 생명윤리)" style="border-top-color:#1D9E75;">
+      <h2>4장 · 생명과 윤리 — 삶과 죽음 · 생명윤리 쟁점</h2>
+      <div class="cap">동서양 생사관 → 하이데거 → 출생·죽음 쟁점 → 생명과학 쟁점 → 동물 권리</div>
+
+      <div class="qbox">
+        <b>핵심 질문 ①</b> 죽음을 어떻게 이해하느냐에 따라 나의 삶이 달라진다. 나는 어떤 삶을 선택할까?<br>
+        <b>핵심 질문 ②</b> 생명을 존중해야 한다면, 그 <b>기준과 원리</b>는 무엇인가?
+      </div>
+
+      <div class="sec">
+        <span class="lbl t">① 동양의 생사관</span>
+        <div class="cap" style="margin:0 0 10px;">각 사상의 <b>세계관</b>이 곧 <b>생사관</b>으로 이어진다 — 세계를 보는 눈이 죽음을 보는 눈을 결정</div>
+
+        <div class="two">
+          <div class="col">
+            <div class="grp neut">
+              <div class="gt">유교 &nbsp;<span style="font-size:11.5px;font-weight:500;">세계관: <span class="kw">천인합일</span> → 성인·군자</span></div>
+              <div class="gs">
+                · <b>도덕적 삶</b>을 중시 — <b>현세주의 · 인본주의</b><br>
+                · 죽음은 <b>자연스러운 현상</b><br>
+                · <b>애도의 예(禮)</b>를 중시 &nbsp;<span style="color:#8A8578;">(죽음 자체보다 살아 있는 도리에 집중)</span>
+              </div>
+            </div>
+            <div class="grp neut">
+              <div class="gt">도가 &nbsp;<span style="font-size:11.5px;font-weight:500;">세계관: <span class="kw">무위자연</span> → 지인·진인</span></div>
+              <div class="gs">
+                · 삶과 죽음은 <b>기(氣)의 순환</b><br>
+                · <b>자연의 순환</b> 과정일 뿐<br>
+                · ★ <b>순응</b>하고 삶과 죽음의 <b>분별을 초월</b>
+              </div>
+            </div>
+            <div class="grp neut">
+              <div class="gt">불교 &nbsp;<span style="font-size:11.5px;font-weight:500;">세계관: 인연생기 → 상호의존 → 변화</span></div>
+              <div class="gs">
+                · 죽음 = <b>오온(五蘊)의 해체</b><br>
+                · <b>생로병사</b>(4고) 중 하나<br>
+                · 현세의 <b>업</b> → 다음 <b>생</b> → <b>윤회 = 고통</b><br>
+                · <b>해탈 · 열반 · 깨달음</b> → 윤회에서 벗어남<br>
+                · <b>중생</b>에게 분별은 의미 없음 &nbsp;<span style="color:#8A8578;">(어차피 윤회하므로)</span>
+              </div>
+            </div>
+          </div>
+          <div class="side neut" style="width:196px;">
+            <b>독립적 실체 X</b><br>모든 것은 서로 <b>의존</b><br><br>
+            그래서 → <b>자비</b> → <b>보살</b><br>
+            <span style="font-size:11.5px;color:#8A8578;">남과 내가 나뉘지 않으니 자비가 자연스럽게 따라온다</span>
+          </div>
+        </div>
+
+        <div class="steps" style="margin-top:8px;">
+          <b>불교 숫자 정리</b> &nbsp;
+          <b>3독</b> 탐(貪)·진(瞋)·치(癡) &nbsp;/&nbsp;
+          <b>3학</b> 계(戒)·정(定)·혜(慧) &nbsp;/&nbsp;
+          <b>4성제</b> 고·집·멸·도 &nbsp;/&nbsp;
+          <b>5온</b> &nbsp;/&nbsp;
+          <b>6바라밀</b> &nbsp;/&nbsp;
+          <b>8정도</b>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl p">② 서양의 생사관 — 플라톤 · 에피쿠로스</span>
+        <div class="two">
+          <div class="col">
+            <div class="grp norm">
+              <div class="gt">플라톤 &nbsp;<span style="font-size:11.5px;font-weight:500;">세계관: <b>이원론적</b></span></div>
+              <div class="gs">
+                <b>이데아</b>(이성 · 영원 · 불변) ↔ <b>현상계</b>(감각적 · 가변 · 모방)<br><br>
+                · 죽음 = <b>육체라는 감옥</b>으로부터 <b>영혼의 해방</b><br>
+                · 그러므로 <b>살아 있을 때의 태도</b>가 중요<br>
+                · 죽음을 <b>두려워할 필요 없음</b>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="grp" style="background:#FAEEDA;border:1.5px solid #EF9F27;">
+              <div class="gt" style="color:#633806;">에피쿠로스 &nbsp;<span style="font-size:11.5px;font-weight:500;">세계관: <b>원자론</b> · 불멸</span></div>
+              <div class="gs" style="color:#854F0B;">
+                죽음 = <b>원자의 해체</b><br>↓<br>
+                <b>감각기관 소멸</b><br>↓<br>
+                <b>경험 불가</b> — 죽음은 우리에게 <b>아무것도 아님</b><br>↓<br>
+                ⇒ <b>비동일성</b> ⇒ <b>두려워할 필요 X</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flow">
+          <b>※ 에피쿠로스의 판단 기준</b> — <b>경험적 결과</b>로 선악을 판단 → <b>쾌락 · 행복</b><br>
+          <b>본성</b> 쾌락을 추구하고 고통을 회피한다 &nbsp;/&nbsp; <b>윤리</b> 쾌락은 선, 고통은 악
+        </div>
+        <div class="warn" style="border-color:#1D9E75;background:#EDF9F4;margin-top:9px;">
+          <div class="wt" style="color:#085041;">★ 두 사람의 결론은 같지만 이유가 다르다</div>
+          <b>플라톤</b> 죽으면 <b>영혼이 해방</b>되니까 두렵지 않다 &nbsp;/&nbsp;
+          <b>에피쿠로스</b> 죽으면 <b>감각이 없어 경험조차 못 하니</b> 두렵지 않다<br>
+          <span style="color:#8A8578;font-size:11.5px;">→ 플라톤은 영혼이 <b>남고</b>, 에피쿠로스는 <b>아무것도 남지 않는다</b>. 선지에서 자주 바꿔치기된다.</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl a">③ 하이데거 — 죽음을 향해 가는 존재</span>
+        <div class="two">
+          <div class="col">
+            <div class="grp" style="background:#FAEEDA;border:1.5px solid #EF9F27;">
+              <div class="gt" style="color:#633806;">실존주의</div>
+              <div class="gs" style="color:#854F0B;">
+                <b>자유</b> · <b>선택</b> · <b>책임</b> → <b>주체적</b><br>
+                <span style="color:#8A8578;">※ 추상적 · 보편적 인간이 <b>아니라</b> 지금 여기의 <b>구체적 나</b></span>
+              </div>
+            </div>
+            <div class="grp" style="background:#FAEEDA;border:1.5px solid #EF9F27;">
+              <div class="gt" style="color:#633806;">현존재(Dasein)</div>
+              <div class="gs" style="color:#854F0B;">
+                <b>본래적</b> 삶 ← <span class="kw">선구적 결단</span> — 죽음으로 <b>미리 달려가 봄</b><br>
+                <b>비본래적</b> 삶 — 불안을 <b>회피</b>하며 사는 삶
+              </div>
+            </div>
+          </div>
+          <div class="side" style="width:200px;border-left-color:#EF9F27;color:#633806;">
+            <b>시간</b> — 인간은 <b>죽음을 향해 가는 존재</b><br>그래서 <b>불안</b>이 생긴다<br><br>
+            <b>죽음의 성격</b><br>· <b>필연적</b><br>· <b>대리 불가</b><br>· <b>독자적</b>
+          </div>
+        </div>
+        <div class="steps" style="margin-top:8px;">
+          <b>흐름</b> &nbsp; 죽음을 향한 존재 → <b>불안</b> → ① 회피하면 <b>비본래적</b> / ② <b>선구적 결단</b>으로 마주하면 <b>본래적</b> 삶
+          <div style="margin-top:5px;color:#8A8578;font-size:11.5px;">※ 죽음을 <b>없애는</b> 게 아니라 <b>직시</b>함으로써 오히려 자기 삶을 되찾는다는 구조</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl c">④ 쟁점 1 — 인공임신중절 · 자살 · 안락사 · 뇌사</span>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin-bottom:0;">
+          <div class="gt" style="color:#26382F;">인공임신중절 &nbsp;<span style="font-size:11.5px;font-weight:500;">— 태아에게 권리가 있는가? 그 기준은?</span></div>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성 (선택 옹호)</div>
+            <ul>
+              <li><b>소유권</b> 논거 — 태아는 여성 몸의 일부</li>
+              <li><b>자율권</b> 논거 — 여성은 자기 삶을 결정할 권리</li>
+              <li><b>정당방위</b> 논거 — 위협에 대한 방어권</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대 (생명 옹호)</div>
+            <ul>
+              <li><b>존엄성</b> 논거 — 태아도 인간, 존엄하다</li>
+              <li><b>무고한 인간의 신성불가침</b> 논거</li>
+              <li><b>잠재성</b> 논거 — 인간이 될 잠재성이 있다</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">자살</div>
+        </div>
+        <div class="two" style="margin-top:8px;">
+          <div class="col">
+            <div class="grp neut">
+              <div class="gt">동양</div>
+              <div class="gs">
+                <b>유교</b> — <b>불감훼상 효지시야</b><br>
+                <span style="color:#8A8578;font-size:11.5px;">신체발부 수지부모, 감히 훼손하지 않는 것이 효의 시작</span><br>
+                <b>불교</b> — <b>불살생(不殺生)</b>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="grp norm">
+              <div class="gt">서양</div>
+              <div class="gs">
+                <b>자연법</b> — <b>자기 보존</b>은 자연적 성향이므로 위배<br>
+                <b>칸트</b> ① <b>자연법적</b> 관점 — 자연적 성향에 반함<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ② <b>정언명령</b> 관점 — 자신을 <b>수단</b>으로 대함 (인격 수단화 X)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flow"><b>참고 — 쇼펜하우어</b> 자살은 문제를 <b>해결하지 못하고</b> 회피할 뿐이다</div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">안락사</div>
+        </div>
+        <div class="flow" style="margin-top:8px;">
+          <b>분류</b> &nbsp; <b>자발적</b> ↔ <b>비자발적</b> (환자의 동의 여부)<br>
+          <b>소극적</b> — 연명치료를 <b>하지 않음</b> &nbsp;/&nbsp; <b>적극적</b> — <b>약물 처방</b> 등 직접 개입 &nbsp;<span style="color:#8A8578;">(연장 ↔ 중단)</span>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성</div>
+            <ul>
+              <li><b>선택</b>할 수 있어야 — <b>인간답게</b> 죽을 권리</li>
+              <li>가족에게 <b>부담을 주지 않음</b></li>
+              <li>제한된 <b>의료 자원</b>의 효율적 사용</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대</div>
+            <ul>
+              <li>생명은 <b>소중</b>하며 <b>선택 대상이 아님</b></li>
+              <li><b>자연 질서</b>에 어긋남</li>
+              <li>의료인의 <b>기본 의무</b>에 위배</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">뇌사 &nbsp;<span style="font-size:11.5px;font-weight:500;">— 죽음의 기준: 뇌 vs 심폐</span></div>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성 (뇌사 인정)</div>
+            <ul>
+              <li>뇌는 <b>핵심 기관</b></li>
+              <li><b>의료 자원</b>의 효율성</li>
+              <li><b>사회 전체의 이익</b></li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대 (심폐사 유지)</div>
+            <ul>
+              <li>연명 기기로 <b>생명 활동</b>이 유지됨</li>
+              <li>생명의 <b>존엄성 경시</b> 우려</li>
+              <li>뇌사 <b>판정 오류</b> 가능성</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl c">⑤ 쟁점 2 — 생명윤리 네 가지 (순서대로)</span>
+        <div class="cap" style="margin:0 0 10px;">공통 물음 — <b>생명을 수단으로 삼아도 되는가?</b></div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin-bottom:0;">
+          <div class="gt" style="color:#26382F;">1. 배아 복제 &nbsp;<span style="font-size:11.5px;font-weight:500;">— 생명은 수단인가?</span></div>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성</div>
+            <ul>
+              <li>배아는 아직 <b>완전한 인간이 아님</b></li>
+              <li>생식·질병 <b>초기 연구</b>에 필요</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대</div>
+            <ul>
+              <li>복제 배아 = <b>인간의 지위</b>를 가짐</li>
+              <li><b>여성의 건강권 · 인권</b> 훼손 문제</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">2. 개체 복제</div>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성</div>
+            <ul>
+              <li><b>불임 부부</b>에게 대안이 됨</li>
+              <li>과학: 복제인간도 <b>독자적 삶</b>이 가능</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대</div>
+            <ul>
+              <li>인간의 <b>존엄성</b> 훼손 — <b>자연스러운 출산</b>에 위배</li>
+              <li>인간의 <b>정체성</b> 위협</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">3. 생식세포 유전자 치료</div>
+        </div>
+        <div class="flow" style="margin-top:8px;">
+          <b>구분</b> &nbsp; <b>체세포</b> 치료 — 부작용이 <b>적고</b> 당사자에 한정 &nbsp;/&nbsp;
+          <b>생식세포</b> 치료 — <b>다음 세대</b>에까지 유전 &nbsp;<span style="color:#8A8578;">(그래서 쟁점이 되는 쪽은 생식세포)</span>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성</div>
+            <ul>
+              <li><b>병의 근원</b>을 치료할 수 있음</li>
+              <li>부모의 <b>자율적 선택</b></li>
+              <li><b>경제적 효율</b> 가치</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대</div>
+            <ul>
+              <li><b>미래 세대의 동의</b>를 받을 수 없음</li>
+              <li><b>우생학</b>으로 흐를 위험</li>
+              <li><b>분배 정의</b> 문제 · <b>의학적 불확실성</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grp" style="background:#F7F4EC;border:1.5px solid #D3D1C7;margin:14px 0 0;">
+          <div class="gt" style="color:#26382F;">4. 동물 실험 &nbsp;<span style="font-size:11.5px;font-weight:500;">— 동물을 수단으로 삼아도 되는가?</span></div>
+        </div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">찬성</div>
+            <ul>
+              <li>인간과 동물은 <b>지위가 다름</b></li>
+              <li><b>생물학적 유사성</b>이 있어 실험이 유효</li>
+              <li>얻는 <b>이익</b>이 큼 · <b>대안이 없음</b></li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">반대</div>
+            <ul>
+              <li>지위의 <b>차이가 없음</b></li>
+              <li><b>생물학적 유사성이 없음</b> — 결과를 인간에 적용하기 곤란</li>
+              <li><b>대안이 있음</b></li>
+            </ul>
+          </div>
+        </div>
+        <div class="warn" style="border-color:#D85A30;background:#FBF0EC;margin-top:10px;">
+          <div class="wt" style="color:#712B13;">★ 함정 — 같은 근거가 양쪽에 다 쓰인다</div>
+          <b>생물학적 유사성</b>은 <b>찬성</b>("비슷하니 실험이 유효")과 <b>반대</b>("충분히 비슷하지 않아 적용 불가") 양쪽에 등장한다.
+          <b>지위 차이</b>도 마찬가지. <b>같은 낱말이라도 어느 방향으로 쓰였는지</b>를 봐야 한다.
+        </div>
+      </div>
+
+      <div class="sec">
+        <span class="lbl t">⑥ 동물 권리의 문제 — 사상가 대립</span>
+        <div class="cap" style="margin:0 0 10px;">동물 실험 쟁점의 <b>사상적 배경</b>. 누가 동물을 도덕적 고려 대상으로 보는가</div>
+        <div class="pc">
+          <div class="yes">
+            <div class="h">동물의 도덕적 지위를 <b>인정</b></div>
+            <ul>
+              <li><b>벤담</b> — 동물도 <b>고통을 느끼는 존재</b>. 기준은 이성이 아니라 <b>쾌고감수 능력</b></li>
+              <li><b>싱어</b> — 공리주의. <b>이익 평등 고려의 원칙</b>, <b>종차별주의 반대</b></li>
+              <li><b>레건</b> — 동물도 <b>'삶의 주체'</b>. 그 자체로 존중받아야 <span style="color:#8A8578;">(의무론)</span></li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="h">동물의 도덕적 지위를 <b>부정</b></div>
+            <ul>
+              <li><b>아리스토텔레스</b> — 인간이 <b>우위</b>. 동물은 인간을 위해 존재</li>
+              <li><b>데카르트</b> — 동물은 <b>'자동인형(기계)'</b>일 뿐</li>
+              <li><b>칸트</b> — 동물에 대한 의무는 <b>간접적</b></li>
+              <li><b>코헨</b> — 동물은 <b>윤리 규범을 고안할 능력이 없음</b></li>
+            </ul>
+          </div>
+        </div>
+        <div class="warn" style="border-color:#7F77DD;background:#F2F1FE;margin-top:10px;">
+          <div class="wt" style="color:#3C3489;">★ 칸트의 위치가 헷갈린다</div>
+          칸트는 <b>동물 학대에 반대</b>한다. 그런데 이유가 <b>동물을 위해서가 아니다</b> —
+          동물을 잔인하게 다루면 <b>인간에 대한 의무감이 무뎌지기 때문</b>이다.
+          그래서 <b>간접적 의무</b>이고, 동물 자체의 <b>권리는 인정하지 않는다</b>.<br>
+          <span style="color:#8A8578;font-size:11.5px;">→ "칸트는 동물 학대에 반대했으므로 동물의 권리를 인정했다"는 선지는 오답.</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="more">
@@ -671,6 +1050,7 @@
 const U1 = "1장 · 실천 윤리와 윤리 문제에 대한 탐구";
 const U2 = "2장 · 동양 윤리 (유교 · 도가 · 불교)";
 const U3 = "3장 · 서양 윤리 (의무론 · 공리주의 · 덕윤리)";
+const U4 = "4장 · 생명과 윤리 (생사관 · 생명윤리)";
 
 const TOPICS = [
   /* ===== 1장 ===== */
@@ -954,6 +1334,123 @@ const TOPICS = [
       <span class="tag c">의무론</span> 동기·의무·보편 원리 (칸트) &nbsp;/&nbsp;
       <span class="tag d">공리주의</span> 결과·유용성·최대 행복 (벤담·밀) &nbsp;/&nbsp;
       <span class="tag b">덕윤리</span> 품성·중용·습관 (아리스토텔레스)`
+  },
+
+  /* ===== 4장 ===== */
+  {
+    u:U4, t:"동양의 생사관 — 유교·도가·불교",
+    body:`세 사상 모두 죽음을 <b>두려워하거나 미화하지 않는다</b>. 다만 <b>이유가 다르다</b>.
+      <ul>
+        <li><b>유교</b> — 세계관은 <b>천인합일</b>. 죽음은 <b>자연스러운 현상</b>이므로 특별히 캐묻지 않고,
+          <b>현세의 도덕적 삶</b>과 <b>애도의 예</b>에 집중한다. <b>현세주의 · 인본주의</b>.</li>
+        <li><b>도가</b> — 세계관은 <b>무위자연</b>. 삶과 죽음은 <b>기(氣)의 순환</b>이자 자연의 한 과정.
+          그러므로 <b>순응</b>하고 삶과 죽음의 <b>분별 자체를 초월</b>한다.</li>
+        <li><b>불교</b> — 세계관은 <b>인연생기</b>. 죽음은 <b>오온의 해체</b>이며 <b>생로병사</b> 중 하나.
+          현세의 <b>업</b>이 다음 <b>생</b>으로 이어지는 <b>윤회</b>는 곧 <b>고통</b>이고,
+          <b>해탈·열반</b>으로 그 고리에서 벗어난다.</li>
+      </ul>
+      <b>불교 숫자</b> — 3독(탐·진·치) / 3학(계·정·혜) / 4성제(고·집·멸·도) / 5온 / 6바라밀 / 8정도`,
+    trap:`<b>★ 세 사상의 "죽음은 자연스럽다"가 같은 뜻이 아니다.</b><br>
+      <span class="tag c">유교</span> 자연스러우니 <b>산 사람의 도리</b>에 집중하라 (현세 중심)<br>
+      <span class="tag d">도가</span> 자연스러우니 <b>분별을 넘어서라</b> (초월)<br>
+      <span class="tag b">불교</span> 자연스럽지만 <b>윤회는 고통</b>이니 <b>벗어나야</b> 한다 (해탈)<br><br>
+      특히 <b>불교만 죽음을 벗어나야 할 것</b>으로 본다는 점이 갈림길이다.`
+  },
+  {
+    u:U4, t:"서양의 생사관 — 플라톤 · 에피쿠로스",
+    body:`두 사람 모두 <b>"죽음을 두려워할 필요 없다"</b>는 <b>결론</b>에 도달하지만, <b>근거가 정반대</b>다.
+      <ul>
+        <li><b>플라톤</b> — <b>이원론</b>. 이데아(이성·영원·불변) ↔ 현상계(감각적·가변·모방).
+          죽음은 <b>육체라는 감옥에서 영혼이 해방</b>되는 것. 그래서 <b>살아 있을 때의 태도</b>가 중요하다.</li>
+        <li><b>에피쿠로스</b> — <b>원자론</b>. 죽음은 <b>원자의 해체</b> → <b>감각기관 소멸</b> → <b>경험 불가</b>.
+          경험할 수 없으니 죽음은 우리에게 <b>아무것도 아니다</b>(비동일성).</li>
+      </ul>
+      <b>에피쿠로스의 판단 기준</b> — <b>경험적 결과</b>로 선악을 판단. 쾌락은 선, 고통은 악.
+      본성상 쾌락을 추구하고 고통을 회피한다.`,
+    trap:`<b>★ 결론이 같아 헷갈리지만 남는 것이 다르다.</b><br>
+      <b>플라톤</b>은 <b>영혼이 남는다</b>(오히려 해방된다). <b>에피쿠로스</b>는 <b>아무것도 남지 않는다</b>.<br><br>
+      그래서 "에피쿠로스는 영혼의 해방을 말했다"거나 "플라톤은 죽으면 아무것도 없다고 했다"는 <b>바꿔치기 선지</b>가 나온다.
+      <b>이원론인가 원자론인가</b>부터 확인할 것.`
+  },
+  {
+    u:U4, t:"하이데거 — 죽음을 향해 가는 존재",
+    body:`<b>실존주의</b>는 추상적·보편적 인간이 아니라 <b>지금 여기의 구체적인 나</b>를 다룬다.
+      <b>자유 · 선택 · 책임</b>을 지닌 <b>주체적</b> 존재.
+      <ul>
+        <li><b>현존재(Dasein)</b> — 자기 존재를 물을 수 있는 존재, 곧 인간.</li>
+        <li>인간은 <b>죽음을 향해 가는 존재</b>이고, 그래서 <b>불안</b>이 생긴다.</li>
+        <li><b>비본래적</b> 삶 — 그 불안을 <b>회피</b>하며 남들처럼 살아가는 삶.</li>
+        <li><b>본래적</b> 삶 — <b>선구적 결단</b>으로 죽음에 <b>미리 달려가 봄</b>으로써 자기 삶을 되찾는 삶.</li>
+      </ul>
+      <b>죽음의 성격</b> — <b>필연적</b>(반드시 온다) · <b>대리 불가</b>(누가 대신 못 한다) · <b>독자적</b>(오직 나의 것)`,
+    trap:`<b>★ 하이데거는 죽음을 없애자는 게 아니다.</b><br>
+      죽음을 <b>직시</b>함으로써 오히려 <b>지금의 삶이 자기 것이 된다</b>는 구조다.
+      "불안을 극복해 없앤다"가 아니라 <b>"불안을 받아들여 본래적으로 산다"</b>.<br><br>
+      <b>선구적 결단</b>이라는 낱말이 나오면 <b>본래적 삶</b>과 짝이라는 것을 바로 떠올릴 것.`
+  },
+  {
+    u:U4, t:"출생·죽음 쟁점 — 인공임신중절 · 자살 · 안락사 · 뇌사",
+    body:`<b>인공임신중절</b> — 태아에게 권리가 있는가?
+      <ul>
+        <li><b>찬성</b> 소유권 / 자율권 / 정당방위 논거</li>
+        <li><b>반대</b> 존엄성 / 무고한 인간의 신성불가침 / 잠재성 논거</li>
+      </ul>
+      <b>자살</b>
+      <ul>
+        <li><b>유교</b> 불감훼상 효지시야 &nbsp;·&nbsp; <b>불교</b> 불살생</li>
+        <li><b>자연법</b> 자기 보존이라는 자연적 성향에 위배</li>
+        <li><b>칸트</b> ① 자연법적 관점(자연적 성향에 반함) ② 정언명령 관점(자신을 <b>수단</b>으로 대함)</li>
+        <li>참고 — <b>쇼펜하우어</b>: 자살은 문제를 해결하지 못하고 <b>회피</b>할 뿐</li>
+      </ul>
+      <b>안락사</b> — 자발적↔비자발적(동의 여부), 소극적(연명치료 중단)↔적극적(약물 처방)<br>
+      찬성: 선택·인간다운 죽음·가족 부담·의료 자원 효율 / 반대: 생명의 소중함·자연 질서·의료인 의무<br><br>
+      <b>뇌사</b> — 뇌 vs 심폐<br>
+      찬성: 뇌가 핵심 기관·의료 자원 효율·사회 이익 / 반대: 연명 기기로 생명 활동 유지·존엄성 경시·판정 오류`,
+    trap:`<b>★ 칸트가 자살을 반대하는 이유는 두 갈래다.</b><br>
+      ① <b>자연법적</b> — 자기 보존이라는 자연적 성향에 반한다<br>
+      ② <b>정언명령</b> — 자신의 <b>인격을 수단</b>으로 삼는다<br>
+      두 근거를 섞어 놓거나 하나만 제시하고 다른 사상가 것이라 하는 선지가 나온다.<br><br>
+      <b>★ 안락사 분류를 정확히</b> — <b>자발/비자발</b>은 <b>환자의 동의</b> 기준, <b>소극/적극</b>은 <b>개입 방식</b> 기준. 축이 다르다.`
+  },
+  {
+    u:U4, t:"생명윤리 네 쟁점 — 배아복제 · 개체복제 · 유전자치료 · 동물실험",
+    body:`공통 물음은 하나다 — <b>생명을 수단으로 삼아도 되는가?</b>
+      <ul>
+        <li><b>1. 배아 복제</b> — 찬성: 배아는 완전한 인간이 아님, 초기 연구에 필요 /
+          반대: 복제 배아도 인간의 지위, 여성의 건강권·인권 훼손</li>
+        <li><b>2. 개체 복제</b> — 찬성: 불임 부부의 대안, 복제인간도 독자적 삶 가능 /
+          반대: 자연스러운 출산에 위배되어 존엄성 훼손, 정체성 위협</li>
+        <li><b>3. 생식세포 유전자 치료</b> — <b>체세포</b>(부작용 적고 당사자 한정) ↔ <b>생식세포</b>(다음 세대에 유전).<br>
+          찬성: 병의 근원 치료, 부모의 자율적 선택, 경제적 효율 /
+          반대: 미래 세대의 동의 불가, 우생학, 분배 정의, 의학적 불확실성</li>
+        <li><b>4. 동물 실험</b> — 찬성: 인간과 동물의 지위 차이, 생물학적 유사성, 이익이 큼, 대안 없음 /
+          반대: 지위 차이 없음, 생물학적 유사성 없음, 대안 있음</li>
+      </ul>`,
+    trap:`<b>★ 같은 근거가 찬반 양쪽에 다 쓰인다.</b><br>
+      <b>생물학적 유사성</b> — 찬성 "비슷하니 실험이 유효하다" / 반대 "충분히 비슷하지 않아 인간에게 적용할 수 없다"<br>
+      <b>지위 차이</b> — 찬성 "다르니 써도 된다" / 반대 "다르지 않다"<br><br>
+      낱말만 보고 진영을 판단하면 걸린다. <b>어느 방향으로 쓰였는지</b>를 확인할 것.<br><br>
+      <b>★ 유전자 치료는 체세포/생식세포 구분이 핵심</b> — 쟁점이 되는 쪽은 <b>다음 세대에 유전되는 생식세포</b>다.`
+  },
+  {
+    u:U4, t:"동물 권리 — 사상가 대립",
+    body:`동물 실험 쟁점의 <b>사상적 배경</b>이다.
+      <ul>
+        <li><b>인정</b> — <b>벤담</b>: 기준은 이성이 아니라 <b>쾌고감수 능력</b>(고통을 느끼는가) /
+          <b>싱어</b>: 공리주의, <b>이익 평등 고려의 원칙</b>과 <b>종차별주의 반대</b> /
+          <b>레건</b>: 동물도 <b>'삶의 주체'</b>이므로 그 자체로 존중받아야 한다(의무론)</li>
+        <li><b>부정</b> — <b>아리스토텔레스</b>: 인간이 <b>우위</b>, 동물은 인간을 위해 존재 /
+          <b>데카르트</b>: 동물은 <b>'자동인형(기계)'</b> /
+          <b>칸트</b>: 동물에 대한 의무는 <b>간접적</b> /
+          <b>코헨</b>: 동물은 <b>윤리 규범을 고안할 능력이 없다</b></li>
+      </ul>`,
+    trap:`<b>★ 칸트의 위치가 가장 헷갈린다.</b><br>
+      칸트는 <b>동물 학대에 반대</b>한다. 그런데 이유가 <b>동물을 위해서가 아니다</b> —
+      동물을 잔인하게 다루면 <b>인간에 대한 의무감이 무뎌지기 때문</b>이다.
+      그래서 <b>간접적 의무</b>이며 동물 자체의 <b>권리는 인정하지 않는다</b>.<br>
+      → "칸트는 동물 학대에 반대했으므로 동물의 권리를 인정했다"는 <b>오답</b>.<br><br>
+      <b>★ 싱어와 레건은 근거가 다르다</b> — <b>싱어는 공리주의</b>(이익 고려), <b>레건은 의무론</b>(삶의 주체이므로 그 자체로 존중).
+      둘을 바꿔 놓는 선지가 자주 나온다.`
   }
 ];
 
