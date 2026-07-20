@@ -18,13 +18,13 @@
   body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
     min-height:100vh;display:flex;flex-direction:column;align-items:center;-webkit-font-smoothing:antialiased;padding:0 16px 40px;}
   a{color:inherit;}
-  header{width:100%;max-width:560px;text-align:center;padding:26px 0 6px;}
+  header{width:100%;max-width:780px;text-align:center;padding:26px 0 6px;}
   .back{display:inline-block;font-size:12.5px;color:var(--green-soft);text-decoration:none;margin-bottom:10px;}
   .back:hover{color:var(--green);}
   header .kicker{font-size:12px;letter-spacing:2px;color:var(--green-soft);font-weight:700;}
   header h1{font-size:22px;font-weight:900;margin-top:4px;}
 
-  .filters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;width:100%;max-width:560px;margin:12px 0 4px;}
+  .filters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;width:100%;max-width:780px;margin:12px 0 4px;}
   .filters button{font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
     padding:6px 12px;border-radius:20px;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.13s;}
   .filters button:hover{border-color:var(--green-soft);}
@@ -35,26 +35,49 @@
   .status-filters button.on.todo-on{background:var(--red);border-color:var(--red);color:#fff;}
   .empty-msg{background:#fff;border:1.5px dashed var(--line);border-radius:14px;
     padding:38px 24px;text-align:center;color:var(--muted);font-size:14.5px;line-height:1.8;
-    max-width:560px;margin:16px auto;}
+    max-width:780px;margin:16px auto;}
   .empty-msg .big{font-size:30px;display:block;margin-bottom:8px;}
   .empty-msg button{margin-top:14px;font-family:inherit;font-size:13px;font-weight:700;
     background:var(--green);color:#fff;border:none;border-radius:18px;padding:9px 18px;cursor:pointer;}
 
-  .progress{width:100%;max-width:560px;margin:14px 0 6px;}
+  /* 진도 옮기기 패널 */
+  .sync-panel{display:none;width:100%;max-width:780px;background:#fff;border:1.5px solid var(--line);
+    border-radius:14px;padding:20px 22px;margin:8px auto 20px;box-shadow:0 2px 12px rgba(38,56,47,.08);}
+  .sync-panel h3{font-size:16px;font-weight:900;color:var(--green);margin-bottom:6px;}
+  .sync-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+  .sync-desc b{color:var(--ink);}
+  .sync-block{margin-bottom:16px;}
+  .sync-block label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .sync-block label span{font-weight:500;color:var(--muted);font-size:12px;}
+  .sync-panel textarea{width:100%;height:74px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;
+    line-height:1.5;color:#4a5a52;background:#f7f9f7;border:1.5px solid var(--line);border-radius:9px;
+    padding:9px 11px;resize:vertical;word-break:break-all;}
+  .sync-panel textarea:focus{outline:none;border-color:var(--green-soft);}
+  .sync-btn{margin-top:8px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
+    background:#fff;color:var(--green);border:1.5px solid var(--green-soft);border-radius:18px;
+    padding:8px 16px;transition:.13s;}
+  .sync-btn:hover{background:var(--green-soft);color:#fff;}
+  .sync-btn.primary{background:var(--green);color:#fff;border-color:var(--green);}
+  .sync-btn.primary:hover{background:#25493b;}
+  .sync-msg{font-size:13px;font-weight:700;color:var(--green);min-height:20px;margin-top:4px;}
+  .sync-close{display:block;margin:12px auto 0;font-family:inherit;font-size:12.5px;color:var(--muted);
+    background:none;border:none;cursor:pointer;text-decoration:underline;}
+
+  .progress{width:100%;max-width:780px;margin:14px 0 6px;}
   .pbar{height:8px;background:var(--line);border-radius:5px;overflow:hidden;}
   .pbar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-line),var(--green-soft));transition:width .35s;}
   .pmeta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px;}
   .pmeta b{color:var(--green);}
 
-  .card{width:100%;max-width:560px;height:340px;margin:16px 0;perspective:1600px;cursor:pointer;}
+  .card{width:100%;max-width:780px;height:310px;margin:16px 0;perspective:1600px;cursor:pointer;}
   .inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
   .card.flip .inner{transform:rotateY(180deg);}
   .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
     background:var(--paper-2);border-radius:20px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;text-align:center;border-top:6px solid var(--green-soft);}
   .front .sess{position:absolute;top:16px;left:18px;font-size:11px;font-weight:700;color:var(--green-soft);letter-spacing:1px;}
-  .front .word{font-size:38px;font-weight:900;color:var(--ink);line-height:1.15;
-    white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;}
+  .front .word{font-size:40px;font-weight:900;color:var(--ink);line-height:1.15;
+    white-space:nowrap;max-width:100%;padding:0 6px;}
   .front .ipa{margin-top:8px;font-size:16px;color:var(--green-soft);font-family:'Noto Sans KR',sans-serif;}
   .front .pos{margin-top:8px;font-size:13px;color:var(--muted);font-style:italic;}
   .speak{margin-top:14px;display:inline-flex;align-items:center;gap:6px;
@@ -80,21 +103,22 @@
   .known-badge{position:absolute;top:16px;right:18px;font-family:'Gaegu',cursive;font-weight:700;
     color:var(--green);border:2.5px solid var(--green);border-radius:8px;padding:0 10px;font-size:16px;transform:rotate(8deg);display:none;}
   .card.is-known .known-badge{display:block;}
-  .empty{width:100%;max-width:560px;text-align:center;color:var(--muted);padding:60px 0;font-size:14px;}
+  .empty{width:100%;max-width:780px;text-align:center;color:var(--muted);padding:60px 0;font-size:14px;}
 
-  .idx{text-align:center;font-size:13px;color:var(--muted);width:100%;max-width:560px;margin-bottom:14px;}
+  .idx{text-align:center;font-size:13px;color:var(--muted);width:100%;max-width:780px;margin-bottom:14px;}
   .idx b{color:var(--ink);}
-  .mark{display:flex;gap:10px;width:100%;max-width:560px;}
+  .mark{display:flex;gap:10px;width:100%;max-width:780px;}
   .mark button{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--line);background:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:.13s;}
   .mark .know{color:var(--green);} .mark .know:hover,.mark .know.on{background:var(--hl);border-color:var(--hl-line);}
   .mark .dunno{color:var(--red);} .mark .dunno:hover{background:#fdeae6;border-color:var(--red);}
-  .nav{display:flex;gap:10px;width:100%;max-width:560px;margin-top:12px;}
+  .nav{display:flex;gap:10px;width:100%;max-width:780px;margin-top:12px;}
   .btn{flex:1;padding:13px;border:none;border-radius:11px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;background:var(--paper-2);color:var(--ink);box-shadow:0 2px 8px rgba(38,56,47,.08);transition:.13s;}
   .btn:hover{transform:translateY(-1px);} .btn.wide{flex:2;}
-  .tools{display:flex;gap:10px;width:100%;max-width:560px;margin-top:16px;justify-content:center;}
+  .tools{display:flex;gap:10px;width:100%;max-width:780px;margin-top:16px;justify-content:center;}
   .tools button{background:none;border:none;color:var(--green-soft);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
   .tools button:hover{color:var(--green);}
-  @media(max-width:520px){.card{height:300px;}.front .word{font-size:26px;}.front .ipa{font-size:14px;}}
+  @media(max-width:520px){.card{height:280px;}.front .word{font-size:24px;}.front .ipa{font-size:13px;}
+    .face{padding:20px 14px;}}
   @media(prefers-reduced-motion:reduce){.inner{transition:none;}}
 </style>
 </head>
@@ -115,6 +139,26 @@
 </div>
 
 <div id="stage"></div>
+
+<div class="sync-panel" id="syncPanel">
+  <h3>🔗 진도 옮기기</h3>
+  <p class="sync-desc">폰과 컴퓨터의 진도를 맞출 수 있어요. 한쪽에서 <b>내 코드를 복사</b>해서, 다른 쪽 <b>아래 칸에 붙여넣고 불러오기</b>를 누르세요.</p>
+
+  <div class="sync-block">
+    <label>① 내 진도 코드 <span id="myCodeInfo"></span></label>
+    <textarea id="myCode" readonly onclick="this.select()"></textarea>
+    <button class="sync-btn" onclick="copyMyCode()">📋 복사하기</button>
+  </div>
+
+  <div class="sync-block">
+    <label>② 다른 기기 코드 붙여넣기</label>
+    <textarea id="inCode" placeholder="여기에 코드를 붙여넣으세요"></textarea>
+    <button class="sync-btn primary" onclick="applyCode()">📥 불러오기</button>
+  </div>
+
+  <div class="sync-msg" id="syncMsg"></div>
+  <button class="sync-close" onclick="toggleSync()">닫기</button>
+</div>
 
 <script>
 /* =====================================================================
@@ -396,6 +440,7 @@ function drawStage(){
     <div class="tools">
       <button onclick="shuffle()">🔀 섞기</button>
       <button onclick="refresh()">↩ 순서대로</button>
+      <button onclick="location.href='../../index.html'">🔗 진도 옮기기</button>
       <button onclick="resetProgress()">🗑 진도 초기화</button>
     </div>`;
   const card = $("card");
@@ -405,19 +450,22 @@ function drawStage(){
   updateProgress();
 }
 
-/* 긴 단어가 한 줄에 들어가도록 폰트 자동 축소 */
+/* 긴 단어가 한 줄에 다 들어가도록 폰트 자동 축소 */
 function fitWord(){
   const el = document.getElementById("frontWord");
   if(!el) return;
-  const parent = el.parentElement;
-  const maxW = parent.clientWidth - 52; // padding 여유
-  let size = window.innerWidth <= 520 ? 26 : 38;
+  const face = el.closest(".face");
+  const avail = face.clientWidth - 40;      // 좌우 여백
+  const isMobile = window.innerWidth <= 520;
+  let size = isMobile ? 24 : 40;
+  const min  = isMobile ? 11 : 15;
   el.style.fontSize = size + "px";
-  while(el.scrollWidth > maxW && size > 13){
+  while(el.scrollWidth > avail && size > min){
     size -= 1;
     el.style.fontSize = size + "px";
   }
 }
+window.addEventListener("resize", fitWord);
 
 /* 브라우저 음성합성으로 발음 재생 (무설치·오프라인) */
 function say(e, word){
@@ -452,6 +500,67 @@ function mark(v,e){
 }
 function shuffle(){ for(let k=list.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[list[k],list[j]]=[list[j],list[k]];} pos=0; drawStage(); }
 function resetProgress(){ if(confirm("외운 표시를 모두 지울까요? (전체 회차)")){ localStorage.removeItem("vocab-known"); pos=0; refresh(); } }
+
+/* ===== 진도 옮기기 패널 ===== */
+function toggleSync(){
+  const p = $("syncPanel");
+  const opening = p.style.display !== "block";
+  p.style.display = opening ? "block" : "none";
+  if(opening) fillMyCode();
+}
+
+function fillMyCode(){
+  const data = known.all();
+  const keys = Object.keys(data);
+  const ta = $("myCode");
+  if(keys.length === 0){
+    ta.value = "";
+    ta.placeholder = "아직 외운 표시를 한 단어가 없어요.";
+    $("myCodeInfo").textContent = "외운 단어 0개";
+    return;
+  }
+  ta.value = btoa(unescape(encodeURIComponent(keys.join("\n"))));
+  $("myCodeInfo").textContent = `외운 단어 ${keys.length}개`;
+}
+
+function copyMyCode(){
+  const ta = $("myCode");
+  if(!ta.value){ $("syncMsg").textContent = "복사할 진도가 없어요."; return; }
+  ta.select();
+  ta.setSelectionRange(0, 999999);   // 모바일 대응
+  let ok = false;
+  try{ ok = document.execCommand("copy"); }catch(e){}
+  if(navigator.clipboard && !ok){
+    navigator.clipboard.writeText(ta.value).then(()=>{
+      $("syncMsg").textContent = "✓ 복사했어요. 다른 기기에 붙여넣으세요.";
+    }).catch(()=>{
+      $("syncMsg").textContent = "위 칸을 길게 눌러 직접 복사해 주세요.";
+    });
+  } else {
+    $("syncMsg").textContent = ok ? "✓ 복사했어요. 다른 기기에 붙여넣으세요."
+                                  : "위 칸을 길게 눌러 직접 복사해 주세요.";
+  }
+}
+
+function applyCode(){
+  const code = $("inCode").value.trim();
+  const msg = $("syncMsg");
+  if(!code){ msg.textContent = "코드를 붙여넣어 주세요."; return; }
+  try{
+    const keys = decodeURIComponent(escape(atob(code))).split("\n").filter(Boolean);
+    if(keys.length === 0) throw new Error("empty");
+    const cur = known.all();
+    let added = 0;
+    keys.forEach(k => { if(!cur[k]){ cur[k] = 1; added++; } });
+    localStorage.setItem("vocab-known", JSON.stringify(cur));
+    $("inCode").value = "";
+    pos = 0; refresh();
+    fillMyCode();
+    msg.textContent = `✓ 불러왔어요. 새로 ${added}개 추가 (전체 ${Object.keys(cur).length}개)`;
+  }catch(e){
+    msg.textContent = "✗ 코드를 읽을 수 없어요. 전체를 다시 붙여넣어 주세요.";
+  }
+}
 
 function updateProgress(){
   const total = list.length;
